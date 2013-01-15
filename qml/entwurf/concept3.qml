@@ -18,22 +18,33 @@ Rectangle {
         ListElement {name: "Page5"; parameters: "param1"; color: "lightblue"}
         ListElement {name: "Page6"; parameters: "param1"; color: "brown"}
         ListElement {name: "Page7"; parameters: "param1"; color: "pink"}
+        ListElement {name: "Page2"; parameters: "param1"; color: "green"}
+        ListElement {name: "Page3"; parameters: "param1"; color: "red"}
+        ListElement {name: "Page4"; parameters: "param1"; color: "steelblue"}
+        ListElement {name: "Page5"; parameters: "param1"; color: "lightblue"}
+        ListElement {name: "Page6"; parameters: "param1"; color: "brown"}
+        ListElement {name: "Page7"; parameters: "param1"; color: "pink"}
     }
 
     Rectangle {
-        width: parent.width-200
+        width: parent.width-180
         anchors.top: parent.top
         anchors.bottom: parent.bottom
         anchors.left: parent.left
         anchors.right: tools.left
         anchors.margins: 30
         Grid {
+            LayoutMirroring.enabled: true
+            LayoutMirroring.childrenInherit: true
             columns: 4
             anchors.fill: parent
             spacing: 20
             flow: Grid.TopToBottom
             layoutDirection: Qt.RightToLeft
-            centerItems: true
+            //itemAlignment: Grid.Center
+            //centerItems: true
+            //horizontalItemAlignment: Grid.AlignLeft
+            verticalItemAlignment: Grid.AlignVCenter
             Repeater {
                 model: theModel
                 delegate: Turningtile {
