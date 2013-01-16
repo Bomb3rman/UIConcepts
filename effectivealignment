@@ -1,0 +1,23 @@
+QQuickGrid::HAlignment QQuickGrid::effectiveHAlign() const
+{
+    HAlignment effectiveAlignment = m_hAlign;
+    if (!m_hAlignImplicit && effectiveLayoutDirection() == Qt::RightToLeft) {
+        switch (hAlign()) {
+        case AlignLeft:
+            effectiveAlignment = AlignRight;
+            break;
+        case AlignRight:
+            effectiveAlignment = AlignLeft;
+            break;
+        default:
+            break;
+        }
+    }
+    return effectiveAlignment;
+} 
+
+
+    Q_PROPERTY(HAlignment effectiveHorizontalAlignment READ effectiveHAlign NOTIFY effectiveHorizontalAlignmentChanged)
+
+
+        HAlignment effectiveHAlign() const;

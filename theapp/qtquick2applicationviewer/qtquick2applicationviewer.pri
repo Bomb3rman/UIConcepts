@@ -113,7 +113,7 @@ android {
             !isEqual(source,$$targetFullPath) {
                 !isEmpty(copyCommand):copyCommand += &&
                 copyCommand += $(MKDIR) \"$$target\"
-                copyCommand += && $(COPY_DIR) \"$$source\" \"$$target\"
+                copyCommand += && $(COPY_DIR) \"$$source/qml\" \"$$target\"
             }
         }
         !isEmpty(copyCommand) {
