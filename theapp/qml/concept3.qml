@@ -1,4 +1,4 @@
-import QtQuick 2.0
+import QtQuick 2.1
 
 Rectangle {
     width: 1200
@@ -27,24 +27,19 @@ Rectangle {
     }
 
     Rectangle {
-        width: parent.width-180
         anchors.top: parent.top
         anchors.bottom: parent.bottom
         anchors.left: parent.left
         anchors.right: tools.left
         anchors.margins: 30
         Grid {
-            LayoutMirroring.enabled: true
-            LayoutMirroring.childrenInherit: true
             columns: 4
-            anchors.fill: parent
-            spacing: 20
-            flow: Grid.TopToBottom
+            anchors.centerIn: parent
+            spacing: 10
             layoutDirection: Qt.RightToLeft
-            //itemAlignment: Grid.Center
-            //centerItems: true
-            //horizontalItemAlignment: Grid.AlignLeft
+            horizontalItemAlignment: Grid.AlignHCenter
             verticalItemAlignment: Grid.AlignVCenter
+            property var selection;
             Repeater {
                 model: theModel
                 delegate: Turningtile {
@@ -60,9 +55,26 @@ Rectangle {
         anchors.right: parent.right
         anchors.top: parent.top
         anchors.bottom: parent.bottom
+
+        Rectangle {
+            id: service
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.top: parent.top
+            anchors.margins: 10
+            height: 200
+            border.color: "black"
+            border.width: 2
+            Image {
+                source: "pics/service.png"
+                anchors.fill: parent
+                anchors.margins: 2
+            }
+        }
+
         Text {
             id: title
-            anchors.top: parent.top
+            anchors.top: service.bottom
             anchors.left: parent.left
             anchors.margins: 10
             text: "The title"

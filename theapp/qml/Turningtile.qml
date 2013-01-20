@@ -2,9 +2,9 @@ import QtQuick 2.0
 
 Item {
     id: root
-    width: rotation == 90 ? 150 + 50 : 150
+    width: 150 + 50*(rotation/90)
     height: front.height - (front.height - back.height)/90 * root.rotation
-    property int rotation: 90
+    property int rotation: 0
 
     Tile {
         id: front
@@ -27,9 +27,35 @@ Item {
     Behavior on rotation {
         NumberAnimation { duration: 500 }
     }
+//    Behavior on width {
+//        NumberAnimation { duration: 500 }
+//    }
+    state: "minimized"
+
+    states: [
+        State {
+            name: "minimized"
+            PropertyChanges {target: root; rotation: 0 }
+        },
+        State {
+            name: "enlarged"
+            PropertyChanges {target: root; rotation: 90 }
+        }
+    ]
     MouseArea {
         id: marea
         anchors.fill: parent
-        onClicked: { print("clicked"); root.rotation == 0 ? root.rotation = 90 : root.rotation = 0 }
+        onClicked: {
+            print(root.parent)
+            if (root.parent.selection !== undefined) {
+                print ("minimizing");
+                root.parent.selection.state = "minimized"
+            } else {
+                print ("not minimizing");
+            }
+
+            root.parent.selection = root;
+            root.state = "enlarged"
+        }
     }
 }

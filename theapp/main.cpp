@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
     PageLoader pageLoader;
 
     QtQuick2ApplicationViewer viewer;
-    viewer.setMainQmlFile(QStringLiteral("qml/concept3.qml"));
+    viewer.setMainQmlFile(QStringLiteral("qml/qml/concept3.qml"));
     viewer.showExpanded();
 
     return app.exec();

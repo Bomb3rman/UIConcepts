@@ -21,3 +21,24 @@ QQuickGrid::HAlignment QQuickGrid::effectiveHAlign() const
 
 
         HAlignment effectiveHAlign() const;
+        
+        
+        
+             \table
+     \row
+         \li
+         \li \inlineimage gridLayout_aligntopleft.png
+            \caption The QPushButton widget provides a command button.
+         \li \inlineimage gridLayout_aligntop.png
+         \li \inlineimage gridLayout_aligncenter.png
+     \row
+        \li Horizontal alignment
+        \li AlignLeft
+        \li AlignHCenter
+        \li AlignHCenter
+     \row
+        \li Vertical alignment
+        \li AlignTop
+        \li AlignTop
+        \li AlignVCenter
+     \endtable
