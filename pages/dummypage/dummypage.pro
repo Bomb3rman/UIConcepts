@@ -2,6 +2,8 @@ TEMPLATE = lib
 
 LIBS *= -L../../plugins -lpageplugin
 
+QT += quick
+
 include(../plugins.pri)
 
 SOURCES += \
@@ -9,3 +11,9 @@ SOURCES += \
 
 HEADERS += \
     dummypage.h
+
+RESOURCES += \
+    recources.qrc
+
+OTHER_FILES += \
+    main.qml

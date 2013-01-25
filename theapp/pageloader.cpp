@@ -5,8 +5,8 @@
 #include <QDebug>
 #include <QJsonArray>
 
-PageLoader::PageLoader(QObject *parent) :
-    QObject(parent)
+PageLoader::PageLoader(QQmlEngine *engine, QObject *rootObj) :
+    QObject()
 {
     QString pluginDir = QCoreApplication::instance()->applicationDirPath() + "/../plugins";
     QCoreApplication::instance()->addLibraryPath(pluginDir);
@@ -30,6 +30,8 @@ PageLoader::PageLoader(QObject *parent) :
                 loader.unload();
                 continue;
             }
+            pPlugin->setEngine(engine);
+            pPlugin->getQQuickItem()->setParentItem(qobject_cast<QQuickItem*>(rootObj));
             loadedPagePlugins.append(pPlugin);
         }
     }

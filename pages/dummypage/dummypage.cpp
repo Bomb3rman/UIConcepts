@@ -1,5 +1,7 @@
 #include "dummypage.h"
 
-DummyPage::DummyPage()
+DummyPage::DummyPage(QObject *parent) :
+    PagePlugin(parent)
 {
+    m_componentUrl.setUrl("qrc:/dummypage/main.qml");
 }

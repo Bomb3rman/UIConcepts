@@ -4,17 +4,13 @@
 #include <QObject>
 #include <QPluginLoader>
 #include <pageplugin.h>
+#include <QQmlEngine>
 
 class PageLoader : public QObject
 {
     Q_OBJECT
 public:
-    explicit PageLoader(QObject *parent = 0);
-    
-signals:
-    
-public slots:
-    
+    explicit PageLoader(QQmlEngine *engine, QObject *rootObj);
 
 private:
     QList<PagePlugin*> loadedPagePlugins;

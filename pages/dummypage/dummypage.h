@@ -8,7 +8,7 @@ class DummyPage : public PagePlugin
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "org.project.dummypage" FILE "dummypage.json")
 public:
-    DummyPage();
+    DummyPage(QObject *parent = 0);
 };
 
 #endif // DUMMYPAGE_H
