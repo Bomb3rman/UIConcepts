@@ -28,6 +28,7 @@ Rectangle {
     }
 
     Rectangle {
+        id: mainFrame
         anchors.top: parent.top
         anchors.bottom: parent.bottom
         anchors.left: parent.left

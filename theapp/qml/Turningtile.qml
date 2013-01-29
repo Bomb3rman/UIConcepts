@@ -42,7 +42,10 @@ Item {
                 onClicked: {
                     print("making it visible")
                     model.Page.visible = true
-                    model.Page.anchors.fill = theRoot
+                    model.Page.parent = mainFrame
+                    model.Page.anchors.centerIn = mainFrame
+                    model.Page.width = mainFrame.width
+                    model.Page.height = mainFrame.height
                 }
             }
         }

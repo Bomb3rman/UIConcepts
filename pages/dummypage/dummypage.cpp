@@ -8,11 +8,11 @@ DummyPage::DummyPage(QObject *parent) :
 
 QString DummyPage::getBasicInfo()
 {
-    return "BasicInfo";
+    return "BasicInfo....";
 }
 
 QString DummyPage::getExtendedInfo()
 {
-    return "ExtendedInfo\nMore Info";
+    return "ExtendedInfo\nMore Info\nnoch mehr";
 }
 
