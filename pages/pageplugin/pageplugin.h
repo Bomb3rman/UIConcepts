@@ -17,6 +17,8 @@ public:
     void setEngine(QQmlEngine *engine);
 
     QQuickItem *getQQuickItem();
+    virtual QString getBasicInfo() { return QString(); };
+    virtual QString getExtendedInfo() {return QString(); };
     
 signals:
     

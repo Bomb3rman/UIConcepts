@@ -68,12 +68,12 @@ BorderImage {
         }
     }
 
-    Image {
-        visible: alert
-        source: "ui/notification.png"
-        anchors.right: parent.right
-        anchors.rightMargin: 20
-        anchors.verticalCenter: parent.verticalCenter
-        NumberAnimation on opacity { running: true; from: 0.2; to: 1; loops: Animation.Infinite; duration: 1000}
-    }
+//    Image {
+//        visible: alert
+//        source: "ui/notification.png"
+//        anchors.right: parent.right
+//        anchors.rightMargin: 20
+//        anchors.verticalCenter: parent.verticalCenter
+//        NumberAnimation on opacity { running: true; from: 0.2; to: 1; loops: Animation.Infinite; duration: 1000}
+//    }
 }

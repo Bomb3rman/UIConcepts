@@ -1,6 +1,7 @@
 import QtQuick 2.1
 
 Rectangle {
+    id: theRoot
     width: 1200
     height: 700
 
@@ -41,7 +42,7 @@ Rectangle {
             verticalItemAlignment: Grid.AlignVCenter
             property var selection;
             Repeater {
-                model: theModel
+                model: pageModel
                 delegate: Turningtile {
                 }
             }

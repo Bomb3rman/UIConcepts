@@ -7,7 +7,7 @@ DEPLOYMENTFOLDERS = myFolder
 
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
-    pageloader.cpp
+    pagemodel.cpp
 
 # Please do not modify the following two lines. Required for deployment.
 include(qtquick2applicationviewer/qtquick2applicationviewer.pri)
@@ -20,7 +20,7 @@ LIBS += -L../plugins -lpageplugin
 QT += quick
 
 HEADERS += \
-    pageloader.h
+    pagemodel.h
 
 OTHER_FILES += qml/ \
     qml/Toolbar2.qml \

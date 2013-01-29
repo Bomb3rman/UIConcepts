@@ -9,22 +9,14 @@ BorderImage {
     border.right: 5; border.bottom: 5
     smooth: true
     antialiasing:  true
+    property string text;
 
     Text {
         id: title
         anchors.top: parent.top
         anchors.left: parent.left
         anchors.margins: 10
-        text: model.name
-        font.family: myFont.name
-    }
-
-    Text {
-        id: subtitle
-        anchors.top: title.bottom
-        anchors.left: parent.left
-        anchors.margins: 10
-        text: model.parameters
+        text: root.text
         font.family: myFont.name
     }
 }

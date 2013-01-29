@@ -14,6 +14,7 @@ Item {
         transform: Rotation { origin.x: 130; origin.y: front.height;
             axis { x: 1; y: 0; z: 0 } angle: rotation
         }
+        text: model.BasicInfo
     }
     Tile {
         id: back
@@ -22,6 +23,28 @@ Item {
         height: 200
         transform: Rotation { origin.x: 130; origin.y: 0;
             axis { x: 1; y: 0; z: 0 } angle: rotation - 90
+        }
+        text: model.ExtendedInfo
+        Rectangle {
+            width: 50
+            height: 50
+            anchors.bottom: parent.bottom
+            anchors.right: parent.right
+            anchors.margins: 5
+            radius: 5
+            border.color: "black"
+            border.width: 2
+            color: "lightgrey"
+            MouseArea {
+                z: 1
+                anchors.fill: parent
+                preventStealing: true
+                onClicked: {
+                    print("making it visible")
+                    model.Page.visible = true
+                    model.Page.anchors.fill = theRoot
+                }
+            }
         }
     }
     Behavior on rotation {
@@ -45,6 +68,7 @@ Item {
     MouseArea {
         id: marea
         anchors.fill: parent
+        enabled: parent.state !== "enlarged"
         onClicked: {
             print(root.parent)
             if (root.parent.selection !== undefined) {
