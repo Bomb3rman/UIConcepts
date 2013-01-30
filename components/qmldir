@@ -1,0 +1,9 @@
+module MMKQmlComponents
+plugin mmkqmlcomponents
+Button 1.0 Button.qml
+LineEdit 1.0 LineEdit.qml
+Checkbox 1.0 Checkbox.qml
+Progressbar 1.0 Progressbar.qml
+
+
+

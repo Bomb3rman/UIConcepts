@@ -4,3 +4,6 @@ SUBDIRS += pages \
     datahandling \
     theapp
 
+SUBDIRS += \
+    components
+

@@ -9,3 +9,9 @@ HEADERS += \
 
 SOURCES += \
     pageplugin.cpp
+
+RESOURCES += \
+    resources.qrc
+
+OTHER_FILES += \
+    main.qml

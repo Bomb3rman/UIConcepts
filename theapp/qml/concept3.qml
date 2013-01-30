@@ -1,4 +1,5 @@
 import QtQuick 2.1
+import MMKQmlComponents 1.0
 
 Rectangle {
     id: theRoot
