@@ -5,36 +5,21 @@ Rectangle {
     id: theRoot
     width: 1200
     height: 700
+    color: "#1b1c1e"
 
     FontLoader {
         id: myFont
         source: "fonts/Quicksand_Bold.otf"
     }
 
-    ListModel {
-        id: theModel
-        ListElement {name: "Page1"; parameters: "param1"; color: "blue"}
-        ListElement {name: "Page2"; parameters: "param1"; color: "green"}
-        ListElement {name: "Page3"; parameters: "param1"; color: "red"}
-        ListElement {name: "Page4"; parameters: "param1"; color: "steelblue"}
-        ListElement {name: "Page5"; parameters: "param1"; color: "lightblue"}
-        ListElement {name: "Page6"; parameters: "param1"; color: "brown"}
-        ListElement {name: "Page7"; parameters: "param1"; color: "pink"}
-        ListElement {name: "Page2"; parameters: "param1"; color: "green"}
-        ListElement {name: "Page3"; parameters: "param1"; color: "red"}
-        ListElement {name: "Page4"; parameters: "param1"; color: "steelblue"}
-        ListElement {name: "Page5"; parameters: "param1"; color: "lightblue"}
-        ListElement {name: "Page6"; parameters: "param1"; color: "brown"}
-        ListElement {name: "Page7"; parameters: "param1"; color: "pink"}
-    }
-
-    Rectangle {
+    Item {
         id: mainFrame
         anchors.top: parent.top
         anchors.bottom: parent.bottom
         anchors.left: parent.left
         anchors.right: tools.left
         anchors.margins: 30
+
         Grid {
             columns: 4
             anchors.centerIn: parent
@@ -53,7 +38,7 @@ Rectangle {
 
     Rectangle {
         id: tools
-        color: "#f5f5f5"
+        color: "#27282a"
         width: 300
         anchors.right: parent.right
         anchors.top: parent.top
@@ -97,19 +82,19 @@ Rectangle {
                 Textfield {anchors.left: l1.right; anchors.margins: 5}
             }
             Label { text: "test" }
-            Checkbox {label: "check that"}
+            Switch {label: "check that"}
             Button{}
 
         }
     }
 
-    Toolbar3 {
-        visible: false
-        id: tBar
-        model: theModel
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-        anchors.margins: 20
-    }
+//    Toolbar3 {
+//        visible: false
+//        id: tBar
+//        model: theModel
+//        anchors.left: parent.left
+//        anchors.right: parent.right
+//        anchors.bottom: parent.bottom
+//        anchors.margins: 20
+//    }
 }

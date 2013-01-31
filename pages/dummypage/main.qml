@@ -1,10 +1,8 @@
 import QtQuick 2.0
+import MMKQmlComponents 1.0
 
-Rectangle {
-    width: 50
-    height: 50
-    color: "red"
-
+Page {
+    id: root
     Text {
         anchors.centerIn: parent
         font.bold: true
@@ -12,18 +10,12 @@ Rectangle {
         color: "white"
         text: "!!!DUMMY PAGE..Bitch!!!"
     }
-    Behavior on width {
-        NumberAnimation{duration: 500}
-    }
-    Behavior on height {
-        NumberAnimation{duration: 500}
-    }
-    MouseArea {
-        anchors.fill: parent
-        onClicked: {
-            parent.width = 50
-            parent.height = 50
-            parent.visible = false
-        }
+
+    Button {
+        anchors.left: parent.left
+        anchors.bottom: parent.bottom
+        anchors.margins: 20
+        text: "Minimize"
+        onClicked: root.state = "minimized"
     }
 }

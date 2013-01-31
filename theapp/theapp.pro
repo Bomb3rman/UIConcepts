@@ -29,17 +29,10 @@ OTHER_FILES += qml/ \
     qml/Toolbutton.qml \
     qml/Toolbar3.qml \
     qml/Tile.qml \
-    qml/Textfield.qml \
-    qml/Progressbar.qml \
-    qml/Page.qml \
     qml/MyGridView.qml \
     qml/main.qml \
-    qml/Label.qml \
     qml/Infobox.qml \
     qml/Header.qml \
     qml/concept4.qml \
     qml/concept3.qml \
-    qml/concept2.qml \
-    qml/Checkbox.qml \
-    qml/Button.qml
-
+    qml/concept2.qml

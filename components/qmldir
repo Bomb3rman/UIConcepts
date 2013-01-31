@@ -1,9 +1,12 @@
 module MMKQmlComponents
 plugin mmkqmlcomponents
 Button 1.0 Button.qml
-LineEdit 1.0 LineEdit.qml
+Textfield 1.0 Textfield.qml
 Checkbox 1.0 Checkbox.qml
 Progressbar 1.0 Progressbar.qml
-
+Label 1.0 Label.qml
+Switch 1.0 Switch.qml
+Page 1.0 Page.qml
+Box 1.0 Box.qml
 
 

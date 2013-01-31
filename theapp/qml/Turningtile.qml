@@ -1,4 +1,5 @@
 import QtQuick 2.0
+import MMKQmlComponents 1.0
 
 Item {
     id: root
@@ -25,37 +26,29 @@ Item {
             axis { x: 1; y: 0; z: 0 } angle: rotation - 90
         }
         text: model.ExtendedInfo
-        Rectangle {
-            width: 50
-            height: 50
+        Button {
             anchors.bottom: parent.bottom
             anchors.right: parent.right
             anchors.margins: 5
-            radius: 5
-            border.color: "black"
-            border.width: 2
-            color: "lightgrey"
-            MouseArea {
-                z: 1
-                anchors.fill: parent
-                preventStealing: true
-                onClicked: {
-                    print("making it visible")
-                    model.Page.visible = true
-                    model.Page.parent = mainFrame
-                    model.Page.anchors.centerIn = mainFrame
-                    model.Page.width = mainFrame.width
-                    model.Page.height = mainFrame.height
-                }
+            text: "View"
+
+            onClicked: {
+                print("making it visible")
+                model.Page.state = "maximized"
+                model.Page.parent = mainFrame
+                model.Page.anchors.centerIn = mainFrame
+                model.Page.width = mainFrame.width
+                model.Page.height = mainFrame.height
+
             }
         }
     }
     Behavior on rotation {
         NumberAnimation { duration: 500 }
     }
-//    Behavior on width {
-//        NumberAnimation { duration: 500 }
-//    }
+    //    Behavior on width {
+    //        NumberAnimation { duration: 500 }
+    //    }
     state: "minimized"
 
     states: [

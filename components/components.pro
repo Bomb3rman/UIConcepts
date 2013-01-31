@@ -48,3 +48,12 @@ unix {
 OTHER_FILES += \
     *.qml
 
+OTHER_FILES += \
+    Switch.qml
+
+OTHER_FILES += \
+    Page.qml
+
+OTHER_FILES += \
+    Box.qml
+
