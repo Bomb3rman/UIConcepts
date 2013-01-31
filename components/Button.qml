@@ -13,7 +13,7 @@ BorderImage {
 
     Text {
         id: text
-        font.family: myFont.name
+        //font.family: myFont.name
         color: "white"//root.pressed ? "#27440a" : "#7e7e80"
         text: root.text
         anchors.centerIn: parent

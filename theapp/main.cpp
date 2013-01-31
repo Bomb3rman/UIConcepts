@@ -9,9 +9,6 @@ int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
 
-    QByteArray data = "1";
-    qputenv("QML_IMPORT_TRACE", data);
-
     QtQuick2ApplicationViewer viewer;
     viewer.engine()->addImportPath("../plugins/qml");
     viewer.setMainQmlFile(QStringLiteral("qml/qml/concept3.qml"));

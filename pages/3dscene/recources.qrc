@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/3dscene">
+        <file>main.qml</file>
+        <file>mmklogo.png</file>
+    </qresource>
+</RCC>

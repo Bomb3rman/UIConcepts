@@ -31,6 +31,11 @@ PageModel::PageModel(QQmlEngine *engine, QObject *rootObj) :
                 continue;
             }
             pPlugin->setEngine(engine);
+            if (pPlugin->getQQuickItem() == 0) {
+                qWarning() << "Error: QML item was not created for" << loader.fileName();
+                loader.unload();
+                continue;
+            }
             pPlugin->getQQuickItem()->setParentItem(qobject_cast<QQuickItem*>(rootObj));
             pPlugin->getQQuickItem()->setVisible(false);
             loadedPagePlugins.append(pPlugin);

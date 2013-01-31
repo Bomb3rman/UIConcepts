@@ -15,6 +15,7 @@ void PagePlugin::setEngine(QQmlEngine *engine)
 {
     qDebug() << m_componentUrl;
     QQmlComponent component(engine, m_componentUrl);
+    qDebug() << component.isError() << component.errorString();
     m_item = qobject_cast<QQuickItem *>(component.create());
 }
 

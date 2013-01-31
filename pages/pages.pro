@@ -4,5 +4,6 @@ TEMPLATE = subdirs
 CONFIG = ordered
 
 SUBDIRS += pageplugin\
-    dummypage
+    dummypage \
+    3dscene
 
