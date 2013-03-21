@@ -6,7 +6,6 @@ BorderImage {
     width: 60;
     border.left: 10; border.top: 10
     border.right: 10; border.bottom: 10
-    clip: true
 
     property string label;
     property bool on: true;
@@ -15,11 +14,41 @@ BorderImage {
         if (on) {
             handle.x = handleArea.drag.minimumX
         } else {
+            //switchOn.start()
             handle.x = handleArea.drag.maximumX
         }
     }
+    NumberAnimation { id: switchOff; target: handle; property: "x"; duration: 400;
+        easing.type: Easing.InOutQuad; from: handle.x; to: handleArea.drag.maximumX }
+    NumberAnimation { id: switchOn; target: handle; property: "x"; duration: 400;
+        easing.type: Easing.InOutQuad; from: handle.x; to: handleArea.drag.minimumX }
+    Rectangle {
+        id:sep1
+        color: "black"
+        height: parent.height
+        width: 1
+        anchors.left: parent.right
+        anchors.leftMargin: 8
+    }
+    Rectangle {
+        color: "#1f1f1f"
+        height: parent.height
+        width: 1
+        anchors.left: sep1.right
+    }
+
+
+    Label {
+        id: swhitchLabel
+        anchors.left: root.right
+        anchors.leftMargin: 17
+        anchors.top: parent.top
+        anchors.topMargin: 3
+        text: root.label
+    }
 
     Item {
+        id: clipRegion
         clip: true
         anchors.left: parent.left
         anchors.right: parent.right
@@ -63,7 +92,7 @@ BorderImage {
             font.family: myFont.name
             MouseArea {
                 anchors.fill: parent
-                onClicked: root.on = false
+                onClicked: switchOff.start();
             }
         }
         Text {
@@ -78,7 +107,7 @@ BorderImage {
             font.family: myFont.name
             MouseArea {
                 anchors.fill: parent
-                onClicked: root.on = true
+                onClicked: switchOn.start();
             }
         }
     }

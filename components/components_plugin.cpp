@@ -3,7 +3,7 @@
 
 #include <qqml.h>
 
-void ComponentsPlugin::registerTypes(const char *uri)
+void StylePlugin::registerTypes(const char *uri)
 {
     qmlRegisterType<DarkComponents>(uri, 1, 0, "DarkComponents");
 }

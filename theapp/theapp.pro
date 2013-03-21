@@ -2,6 +2,8 @@
 myFolder.target = qml
 DEPLOYMENTFOLDERS = myFolder
 
+TARGET = theapp
+
 #QMAKE_POST_LINK = mkdir -p $$OUT_PWD/qml && $${QMAKE_COPY} -r $$PWD/qml $$OUT_PWD
 
 
@@ -17,22 +19,10 @@ INCLUDEPATH += ../pages/pageplugin
 
 LIBS += -L../plugins -lpageplugin
 
-QT += quick
+QT += quick widgets
 
 HEADERS += \
     pagemodel.h
 
-OTHER_FILES += qml/ \
-    qml/Toolbar2.qml \
-    qml/Toolbar.qml \
-    qml/Turningtile.qml \
-    qml/Toolbutton.qml \
-    qml/Toolbar3.qml \
-    qml/Tile.qml \
-    qml/MyGridView.qml \
-    qml/main.qml \
-    qml/Infobox.qml \
-    qml/Header.qml \
-    qml/concept4.qml \
-    qml/concept3.qml \
-    qml/concept2.qml
+OTHER_FILES += qml/*
+

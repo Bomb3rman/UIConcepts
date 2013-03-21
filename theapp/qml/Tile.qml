@@ -1,5 +1,5 @@
 import QtQuick 2.0
-import MMKQmlComponents 1.0
+import MMKQmlStyle 1.0
 
 Box {
     id: root

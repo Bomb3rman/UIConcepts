@@ -5,5 +5,5 @@ SUBDIRS += pages \
     theapp
 
 SUBDIRS += \
-    components
+    styles
 

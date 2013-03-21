@@ -3,7 +3,7 @@
 
 #include <QQmlExtensionPlugin>
 
-class ComponentsPlugin : public QQmlExtensionPlugin
+class StylePlugin : public QQmlExtensionPlugin
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QQmlExtensionInterface")

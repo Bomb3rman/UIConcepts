@@ -1,5 +1,7 @@
 import QtQuick 2.0
-import MMKQmlComponents 1.0
+import MMKQmlStyle 1.0
+import QtQuick.Controls 1.0
+import QtQuick.Controls.Styles 1.0
 
 Item {
     id: root
@@ -39,7 +41,7 @@ Item {
                 model.Page.anchors.centerIn = mainFrame
                 model.Page.width = mainFrame.width
                 model.Page.height = mainFrame.height
-
+                model.Page.visible = true;
             }
         }
     }
