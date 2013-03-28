@@ -21,34 +21,34 @@ AppWindow {
         anchors.right: tools.left
         anchors.margins: 30
 
-        //        Grid {
-        //            columns: 4
-        //            anchors.centerIn: parent
-        //            spacing: 10
-        //            layoutDirection: Qt.RightToLeft
-        //            horizontalItemAlignment: Grid.AlignHCenter
-        //            verticalItemAlignment: Grid.AlignVCenter
-        //            property var selection;
-        //            Repeater {
-        //                model: pageModel
-        //                delegate: Turningtile {
-        //                }
-        //            }
-        //        }
-        TabView {
-            anchors.fill: parent
-            style: tabViewStyle
-            Tab {
-                title: "Buttons"
-            }
-            Tab {
-                title: "Sliders"
-            }
-            Tab {
-                title: "Progress"
-                Rectangle {color: "blue"}
-            }
-        }
+                Grid {
+                    columns: 4
+                    anchors.centerIn: parent
+                    spacing: 10
+                    layoutDirection: Qt.RightToLeft
+                    horizontalItemAlignment: Grid.AlignHCenter
+                    verticalItemAlignment: Grid.AlignVCenter
+                    property var selection;
+                    Repeater {
+                        model: pageModel
+                        delegate: Turningtile {
+                        }
+                    }
+                }
+//        TabView {
+//            anchors.fill: parent
+//            style: tabViewStyle
+//            Tab {
+//                title: "Buttons"
+//            }
+//            Tab {
+//                title: "Sliders"
+//            }
+//            Tab {
+//                title: "Progress"
+//                Rectangle {color: "blue"}
+//            }
+//        }
     }
 
     Rectangle {
@@ -143,12 +143,14 @@ AppWindow {
                 ProgressBar { style: progressStyle; value: 1-parent.progress}
                 ProgressBar { style: progressStyle; value: 1}
                 GroupBox {
+                    id: gbox
+                    //style: gboxStyle
                     title: qsTr("Package selection")
                     Column {
-                        ExclusiveGroup { id: group }
                         RadioButton { style: radioStyle; exclusiveGroup: group; text: "text1"}
                         RadioButton { style: radioStyle; exclusiveGroup: group; text: "text2"}
                         RadioButton { style: radioStyle; exclusiveGroup: group; text: "text3"}
+                        ExclusiveGroup { id: group }
                     }
                 }
             }

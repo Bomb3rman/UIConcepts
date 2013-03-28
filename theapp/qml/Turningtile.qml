@@ -34,8 +34,9 @@ Item {
             anchors.margins: 5
             text: "View"
 
+            style: buttonStyle
+
             onClicked: {
-                print("making it visible")
                 model.Page.state = "maximized"
                 model.Page.parent = mainFrame
                 model.Page.anchors.centerIn = mainFrame
@@ -70,12 +71,8 @@ Item {
         onClicked: {
             print(root.parent)
             if (root.parent.selection !== undefined) {
-                print ("minimizing");
                 root.parent.selection.state = "minimized"
-            } else {
-                print ("not minimizing");
             }
-
             root.parent.selection = root;
             root.state = "enlarged"
         }

@@ -1,0 +1,15 @@
+module MMKQmlStyle
+plugin mmkqmlstyle
+MMKButton 1.0 Button.qml
+MMKTextField 1.0 Textfield.qml
+Checkbox 1.0 Checkbox.qml
+MMKProgressBar 1.0 Progressbar.qml
+MMKLabel 1.0 MMKLabel.qml
+MMKCheckBox 1.0 RadioButton.qml
+MMKPage 1.0 Page.qml
+Box 1.0 Box.qml
+MMKSlider 1.0 MMKSlider.qml
+MMKTabView 1.0 MMKTabView.qml
+MMKComboBox 1.0 MMKComboBox.qml
+MMKRadioButton 1.0 MMKRadioButton.qml
+MMKGroupBox 1.0 MMKGroupBox.qml

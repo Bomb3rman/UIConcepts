@@ -5,6 +5,8 @@ CONFIG = ordered
 
 SUBDIRS += pageplugin\
     dummypage \
-    dummypage2 \
-    3dscene
-
+    woodprofiles \
+    3dscene \
+    systemparameters \
+    machineparameters \
+    history
