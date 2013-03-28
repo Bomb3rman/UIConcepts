@@ -16,10 +16,13 @@ int main(int argc, char *argv[])
     app.setPalette(newSystemPalette);
 
     QtQuick2ApplicationViewer viewer;
+    QSurfaceFormat format;
+    format.setSamples(4);
     viewer.engine()->addImportPath("../plugins/qml");
     PageModel pageLoader(viewer.engine(), viewer.rootObject());
     viewer.rootContext()->setContextProperty("pageModel", &pageLoader);
     viewer.setMainQmlFile(QStringLiteral("qml/qml/concept3.qml"));
+    viewer.setFormat(format);
     viewer.showExpanded();
 
     return app.exec();

@@ -13,7 +13,6 @@ Style {
         color: "transparent"
         border.color: "black"
         border.width: 2
-        Component.onCompleted: print(parent.parent.parent)
     }
 
     property Component menuItem: Rectangle {

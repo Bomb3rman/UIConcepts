@@ -72,7 +72,6 @@ RadioButtonStyle {
                 text: "On"
                 font.bold: true
                 font.pixelSize: 11
-                font.family: myFont.name
             }
             Text {
                 id: offText
@@ -83,7 +82,6 @@ RadioButtonStyle {
                 text: "Off"
                 font.bold: true
                 font.pixelSize: 11
-                font.family: myFont.name
             }
         }
     }

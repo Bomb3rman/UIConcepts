@@ -35,7 +35,6 @@ MMKPage {
                 id: rotaAnim
                 from: 0; to: 365; duration: 3000; loops: Animation.Infinite;
                 running: true
-                onRunningChanged: print ("running changed" + running)
             }
         }
 

@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/dummypage">
+    <qresource prefix="/systemparameters">
         <file>main.qml</file>
     </qresource>
 </RCC>

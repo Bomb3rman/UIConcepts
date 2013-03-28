@@ -5,9 +5,8 @@ import QtQuick.Controls.Styles 1.0
 ButtonStyle {
     id: root
     background: Item {
-        implicitHeight: 50
-        implicitWidth: 170
-        Component.onCompleted: print ("----------" + root.label)
+        implicitHeight: 30
+        implicitWidth: 130
         BorderImage {
             id: img
             anchors.fill: parent

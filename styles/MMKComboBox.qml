@@ -58,9 +58,6 @@ ComboBoxStyle {
                             anchors.fill: parent
                             preventStealing: true
                             hoverEnabled: true
-                            onPressed: print("Haaaaalo")
-                            onPositionChanged: print("HUUUUUU")
-                            onEntered: print ("entereddddd")
                         }
                     }
                 }

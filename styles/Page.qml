@@ -9,6 +9,7 @@ BorderImage {
     border.left: 5; border.top: 5
     border.right: 5; border.bottom: 5
     visible: opacity != 0
+    clip: true
 
     state: "minimized"
 

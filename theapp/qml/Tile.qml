@@ -14,6 +14,8 @@ Box {
         anchors.top: parent.top
         anchors.left: parent.left
         anchors.margins: 10
+        width: parent.width
+        wrapMode: Text.WordWrap
         text: root.text
         font.family: myFont.name
         color: "white"

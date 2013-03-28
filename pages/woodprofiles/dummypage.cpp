@@ -3,12 +3,12 @@
 DummyPage::DummyPage(QObject *parent) :
     PagePlugin(parent)
 {
-    m_componentUrl.setUrl("qrc:/dummypage/main.qml");
+    m_componentUrl.setUrl("qrc:/woodprofiles/main.qml");
 }
 
 QString DummyPage::getBasicInfo()
 {
-    return "BasicInfo....";
+    return "Woodprofiles";
 }
 
 QString DummyPage::getExtendedInfo()

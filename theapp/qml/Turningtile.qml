@@ -5,7 +5,7 @@ import QtQuick.Controls.Styles 1.0
 
 Item {
     id: root
-    width: 150 + 50*(rotation/90)
+    width: 180 + 50*(rotation/90)
     height: front.height - (front.height - back.height)/90 * root.rotation
     property int rotation: 0
 
@@ -69,7 +69,6 @@ Item {
         anchors.fill: parent
         enabled: parent.state !== "enlarged"
         onClicked: {
-            print(root.parent)
             if (root.parent.selection !== undefined) {
                 root.parent.selection.state = "minimized"
             }

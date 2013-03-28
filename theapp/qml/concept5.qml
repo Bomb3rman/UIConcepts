@@ -77,7 +77,6 @@ Rectangle {
                     //theView.contentX = theView.currentIndex * theView.width/2
                     //theView.positionViewAtIndex(index, ListView.Contain);
                     //moveAnim.start()
-                    //print("positioning view" + moveAnim.to + " " + theView.contentX)
                 } else {
                 }
             }

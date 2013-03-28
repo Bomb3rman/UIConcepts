@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/dummypage">
+    <qresource prefix="/history">
         <file>main.qml</file>
     </qresource>
 </RCC>
