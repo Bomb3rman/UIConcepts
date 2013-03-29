@@ -9,13 +9,11 @@ PageModel::PageModel(QQmlEngine *engine, QObject *rootObj) :
     QAbstractListModel()
 {
     QString pluginDir = QCoreApplication::instance()->applicationDirPath() + "/../plugins";
-    qDebug() << pluginDir;
     QCoreApplication::instance()->addLibraryPath(pluginDir);
 
     QDir currentDir(pluginDir);
     QStringList entryList = currentDir.entryList(QDir::Files | QDir::NoDotAndDotDot | QDir::NoSymLinks);
 
-    qDebug() << entryList << currentDir.absolutePath();
     foreach (QString plugin, entryList) {
         QPluginLoader loader(plugin);
         if (loader.metaData().value(QString("MetaData")).toObject().value("type").toString()

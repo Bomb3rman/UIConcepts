@@ -1,6 +1,7 @@
 #include <QtGui/QGuiApplication>
 #include <QApplication>
-#include "qtquick2applicationviewer.h"
+//#include "qtquick2applicationviewer.h"
+#include <QQuickView>
 #include <QPluginLoader>
 #include <QDebug>
 #include <pagemodel.h>
@@ -15,15 +16,15 @@ int main(int argc, char *argv[])
     newSystemPalette.setColor(QPalette::Inactive, QPalette::Text, QColor(Qt::gray));
     app.setPalette(newSystemPalette);
 
-    QtQuick2ApplicationViewer viewer;
+    QQuickView viewer;
     QSurfaceFormat format;
     format.setSamples(4);
     viewer.engine()->addImportPath("../plugins/qml");
     PageModel pageLoader(viewer.engine(), viewer.rootObject());
     viewer.rootContext()->setContextProperty("pageModel", &pageLoader);
-    viewer.setMainQmlFile(QStringLiteral("qml/qml/concept3.qml"));
+    viewer.setSource(QUrl("qml/concept3.qml"));
     viewer.setFormat(format);
-    viewer.showExpanded();
+    viewer.show();
 
     return app.exec();
 }

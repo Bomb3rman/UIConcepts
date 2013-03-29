@@ -12,7 +12,7 @@ first.depends = $(first) copyqmldir copyqmldir2 copyqmldir3
 export(first.depends)
 copyqmldir.commands = $$QMAKE_COPY $$OUT_PWD/qmldir $$OUT_PWD/$$DESTDIR/qmldir
 copyqmldir2.commands = $$QMAKE_COPY $$PWD/*.qml $$OUT_PWD/$$DESTDIR/
-copyqmldir3.commands = $(COPY_DIR) $$PWD/ui $$OUT_PWD/$$DESTDIR/ui/
+copyqmldir3.commands = $(COPY_DIR) $$PWD/ui $$OUT_PWD/$$DESTDIR/
 export(copyqmldir.commands)
 export(copyqmldir2.commands)
 export(copyqmldir3.commands)

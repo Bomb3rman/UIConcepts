@@ -3,7 +3,6 @@
 PagePlugin::PagePlugin(QObject *parent) :
     QObject(parent)
 {
-
 }
 
 PagePlugin::~PagePlugin()
@@ -13,9 +12,9 @@ PagePlugin::~PagePlugin()
 
 void PagePlugin::setEngine(QQmlEngine *engine)
 {
-    qDebug() << m_componentUrl;
+    m_engine = engine;
+    Q_EMIT(engineChanged());
     QQmlComponent component(engine, m_componentUrl);
-    qDebug() << component.isError() << component.errorString();
     m_item = qobject_cast<QQuickItem *>(component.create());
 }
 

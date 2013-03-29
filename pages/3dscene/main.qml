@@ -48,14 +48,4 @@ MMKPage {
         text: "!!!DUMMY PAGE..With a 3D Scene!!!"
         style: Text.Raised; styleColor: "#AAAAAA"
     }
-
-    Button {
-        anchors.left: parent.left
-        anchors.bottom: parent.bottom
-        anchors.margins: 20
-        text: "Minimize"
-        onClicked: rootPage.state = "minimized"
-        style: MMKButton{}
-    }
-
 }

@@ -1,6 +1,12 @@
 # Add more folders to ship with the application, here
-myFolder.target = qml
-DEPLOYMENTFOLDERS = myFolder
+#myFolder.target = qml
+#DEPLOYMENTFOLDERS = myFolder
+
+first.depends = $(first) copyassets
+export(first.depends)
+copyassets.commands = $(COPY_DIR) $$PWD/qml $$OUT_PWD/
+export(copyassets.commands)
+QMAKE_EXTRA_TARGETS = first copyassets
 
 TARGET = theapp
 
@@ -12,8 +18,8 @@ SOURCES += main.cpp \
     pagemodel.cpp
 
 # Please do not modify the following two lines. Required for deployment.
-include(qtquick2applicationviewer/qtquick2applicationviewer.pri)
-qtcAddDeployment()
+#include(qtquick2applicationviewer/qtquick2applicationviewer.pri)
+#qtcAddDeployment()
 
 INCLUDEPATH += ../pages/pageplugin
 

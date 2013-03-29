@@ -118,14 +118,4 @@ MMKPage {
             }
         }
     }
-
-    Button {
-        anchors.left: parent.left
-        anchors.bottom: parent.bottom
-        anchors.margins: 20
-        text: "Minimize"
-        onClicked: rootPage.state = "minimized"
-        style: MMKButton{}
-    }
-
 }

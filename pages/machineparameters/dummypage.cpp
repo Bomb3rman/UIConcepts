@@ -13,6 +13,6 @@ QString DummyPage::getBasicInfo()
 
 QString DummyPage::getExtendedInfo()
 {
-    return "ExtendedInfo\nMore Info\nnoch mehr";
+    return "Machine is on\nblabla\nblablabla";
 }
 

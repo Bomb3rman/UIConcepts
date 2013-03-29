@@ -6,19 +6,44 @@ import QtQuick.Controls.Styles 1.0
 MMKPage {
     id: rootPage
     Text {
-        anchors.centerIn: parent
+        id: title
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.margins: 10
         font.bold: true
         font.pixelSize: 30
         color: "white"
-        text: "!!!DUMMY PAGE..Bitch!!!"
+        text: "Wood profiles"
     }
 
-    Button {
+    Grid {
+        anchors.top: title.bottom
         anchors.left: parent.left
-        anchors.bottom: parent.bottom
         anchors.margins: 20
-        text: "Minimize"
-        onClicked: rootPage.state = "minimized"
-        style: MMKButton{}
+        spacing: 10
+        Repeater {
+            model: woodModel
+            delegate: Box {
+                width: 220
+                height: 150
+                Image {
+                    id: img
+                    width: 100
+                    height: 100
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.left: parent.left
+                    anchors.leftMargin: 5
+                    source: model.image
+                }
+                Text {
+                    anchors.right: parent.right
+                    anchors.top: parent.top
+                    anchors.topMargin: 5
+                    anchors.rightMargin: 7
+                    color: "white"
+                    text: model.name
+                }
+            }
+        }
     }
 }

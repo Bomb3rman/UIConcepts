@@ -21,12 +21,14 @@ public:
     virtual QString getExtendedInfo() {return QString(); };
     
 signals:
+    void engineChanged();
     
 public slots:
 
 protected:
     QUrl m_componentUrl;
     QQuickItem *m_item;
+    QQmlEngine *m_engine;
 };
 
 #endif // PAGEPLUGIN_H
