@@ -22,6 +22,7 @@ private:
 class WoodModel : public QAbstractListModel
 {
     Q_OBJECT
+    Q_PROPERTY(int activeProfile READ activeProfile WRITE setActiveProfile NOTIFY activeProfileChanged)
 public:
     enum WoodRoles {
         NameRole = Qt::UserRole + 1,
@@ -36,10 +37,20 @@ public:
 
     QVariant data(const QModelIndex & index, int role = Qt::DisplayRole) const;
 
+    Q_INVOKABLE bool saveProfile(int id, QString name, QString image);
+
+    int activeProfile();
+
+    void setActiveProfile(int id);
+
+Q_SIGNALS:
+    void activeProfileChanged();
+
 protected:
     QHash<int, QByteArray> roleNames() const;
 private:
     QList<Wood> m_wood;
+    int m_activeProfile;
 };
 
 #endif // WOODMODEL_H

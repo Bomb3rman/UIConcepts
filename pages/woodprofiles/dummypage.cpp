@@ -48,6 +48,6 @@ QString DummyPage::getExtendedInfo()
 void DummyPage::setModel()
 {
     qDebug() << "Setting wood model";
-    m_engine->rootContext()->setContextProperty("woodModel", QVariant::fromValue(woodModel));
+    m_engine->rootContext()->setContextProperty("woodModel", woodModel);
 }
 

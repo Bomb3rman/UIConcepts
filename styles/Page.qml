@@ -38,9 +38,11 @@ BorderImage {
     }
 
     Button {
-        anchors.left: parent.left
-        anchors.bottom: parent.bottom
-        anchors.margins: 20
+        z:10
+        width: 120
+        anchors.right: parent.right
+        anchors.top: parent.top
+        anchors.margins: 10
         text: "Minimize"
         onClicked: rootPage.state = "minimized"
         style: MMKButton{}

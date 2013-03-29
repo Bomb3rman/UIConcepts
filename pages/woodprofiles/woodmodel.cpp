@@ -17,7 +17,7 @@ QUrl Wood::image() const
 }
 
 WoodModel::WoodModel(QObject *parent)
-    : QAbstractListModel(parent)
+    : QAbstractListModel(parent), m_activeProfile(-1)
 {
 }
 
@@ -44,6 +44,31 @@ QVariant WoodModel::data(const QModelIndex & index, int role) const {
     else if (role == ImageRole)
         return wood.image();
     return QVariant();
+}
+
+bool WoodModel::saveProfile(int id, QString name, QString image)
+{
+    if (id == -2) {
+        addProfile(Wood(name, image));
+        return true;
+    }
+    if (id < 0 || id >= rowCount())
+        return false;
+
+    m_wood[id] = Wood(name, image);
+    Q_EMIT dataChanged(index(id), index(id));
+    return true;
+}
+
+int WoodModel::activeProfile()
+{
+    return m_activeProfile;
+}
+
+void WoodModel::setActiveProfile(int id)
+{
+    m_activeProfile = id;
+    Q_EMIT activeProfileChanged();
 }
 
 QHash<int, QByteArray> WoodModel::roleNames() const {

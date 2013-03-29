@@ -91,18 +91,18 @@ MMKPage {
         RadioButton {text: "Option 4"; style: radioBStyle;}
         RadioButton {text: "Option 5"; style: radioBStyle;}
         Button{ text: "Dummybutton"; style: buttonStyle; width: 170}
-        Slider{ style: sliderStyle}
+        Slider{ z: 1; style: sliderStyle}
         TextField{ style: textFieldStyle }
-        ComboBox {
-            style: comboBoxStyle
-            model: ListModel {
-                id: menuItems
-                ListElement { text: "Banana"; color: "Yellow" }
-                ListElement { text: "Apple"; color: "Green" }
-                ListElement { text: "Coconut"; color: "Brown" }
-            }
-            width: 200
-        }
+//        ComboBox {
+//            style: comboBoxStyle
+//            model: ListModel {
+//                id: menuItems
+//                ListElement { text: "Banana"; color: "Yellow" }
+//                ListElement { text: "Apple"; color: "Green" }
+//                ListElement { text: "Coconut"; color: "Brown" }
+//            }
+//            width: 200
+//        }
         ProgressBar { style: progressStyle; value: parent.progress}
         ProgressBar { style: progressStyle; value: 1-parent.progress}
         ProgressBar { style: progressStyle; value: 1}

@@ -9,7 +9,7 @@ TextFieldStyle {
     font.bold: true
     background: Item {
         implicitHeight: img.height
-        implicitWidth: 150
+        implicitWidth: 190
         BorderImage {
             id: img
             source: "ui/textfield.png"

@@ -15,6 +15,12 @@ void PagePlugin::setEngine(QQmlEngine *engine)
     m_engine = engine;
     Q_EMIT(engineChanged());
     QQmlComponent component(engine, m_componentUrl);
+    if (component.status() != QQmlComponent::Ready) {
+        qDebug() << component.errorString();
+//        foreach (QQmlError error, component.errors()) {
+//            qWarning() << error;
+//        }
+    }
     m_item = qobject_cast<QQuickItem *>(component.create());
 }
 
