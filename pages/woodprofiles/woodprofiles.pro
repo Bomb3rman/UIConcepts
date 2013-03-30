@@ -4,6 +4,8 @@ LIBS *= -L../../plugins -lpageplugin
 
 QT += quick xml
 
+LIBS += -L../../plugins -ldatahandling
+
 include(../plugins.pri)
 
 first.depends = $(first) copyassets

@@ -5,19 +5,7 @@
 #include <QStringList>
 #include <QImage>
 #include <QUrl>
-
-class Wood
-{
-public:
-    Wood(const QString &name, const QString &img);
-
-    QString name() const;
-    QUrl image() const;
-
-private:
-    QString m_name;
-    QUrl m_img;
-};
+#include "../../datahandling/wood.h"
 
 class WoodModel : public QAbstractListModel
 {
