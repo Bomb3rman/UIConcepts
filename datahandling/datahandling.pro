@@ -5,7 +5,7 @@ QT += xml
 
 DESTDIR = ../plugins
 
-DEFINES += DATAHANDLING_LIBRARY
+DEFINES += DATAHANDLING_LIBRARY USE_XML
 
 SOURCES += datahandling.cpp
 
@@ -19,3 +19,9 @@ HEADERS += \
 SOURCES += \
     wood.cpp \
     woodmodel.cpp
+
+HEADERS += \
+    xmlaccess.h
+
+SOURCES += \
+    xmlaccess.cpp

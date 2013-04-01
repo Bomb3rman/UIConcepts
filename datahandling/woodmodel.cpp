@@ -1,9 +1,13 @@
 #include "woodmodel.h"
 #include <QDebug>
+#include <xmlaccess.h>
 
 WoodModel::WoodModel(QObject *parent)
     : QAbstractListModel(parent), m_activeProfile(-1)
 {
+#if defined(USE_XML)
+    XMLAccess::readProfilesXML(this);
+#endif
 }
 
 void WoodModel::addProfile(const Wood &wood)
@@ -42,6 +46,8 @@ bool WoodModel::saveProfile(int id, QString name, QString image)
 
     m_wood[id] = Wood(name, image);
     Q_EMIT dataChanged(index(id), index(id));
+
+    XMLAccess::saveProfilesXML(this);
     return true;
 }
 
