@@ -1,0 +1,10 @@
+<woodprofiles>
+  <profile>
+    <name>Birch</name>
+    <img>birke.jpg</img>
+  </profile>
+  <profile>
+    <name>Maple</name>
+    <img>ahorn.jpg</img>
+  </profile>
+</woodprofiles>
