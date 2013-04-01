@@ -10,6 +10,8 @@ QMAKE_EXTRA_TARGETS = first copyassets
 
 TARGET = theapp
 
+QMAKE_RPATHDIR += $ORIGIN/../plugins
+
 # The .cpp file which was generated for your project. Feel free to hack it.
 SOURCES += main.cpp \
     pagemodel.cpp
