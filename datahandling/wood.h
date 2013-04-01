@@ -8,13 +8,13 @@
 class Q_DECL_EXPORT Wood
 {
 public:
-    Wood(const QString &name, const QString &img);
+    Wood(const QString &name, const QImage &img);
 
     QString name() const;
-    QUrl image() const;
+    QImage image() const;
 
 private:
     QString m_name;
-    QUrl m_img;
+    QImage m_img;
 };
 #endif // WOOD_H

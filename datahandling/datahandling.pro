@@ -1,7 +1,7 @@
 TARGET = datahandling
 TEMPLATE = lib
 
-QT += xml
+QT += xml quick
 
 DESTDIR = ../plugins
 

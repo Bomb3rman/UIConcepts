@@ -3,11 +3,20 @@
 #include <xmlaccess.h>
 
 WoodModel::WoodModel(QObject *parent)
-    : QAbstractListModel(parent), m_activeProfile(-1)
+    : QAbstractListModel(parent), QQuickImageProvider(QQmlImageProviderBase::Image), m_activeProfile(-1)
 {
 #if defined(USE_XML)
     XMLAccess::readProfilesXML(this);
 #endif
+}
+
+QImage WoodModel::requestImage(const QString & id, QSize * size, const QSize & requestedSize)
+{
+    int row = id.toInt();
+    if (row < 0 && row >= rowCount())
+        return QImage();
+
+    return m_wood[row].image();
 }
 
 void WoodModel::addProfile(const Wood &wood)
@@ -35,7 +44,7 @@ QVariant WoodModel::data(const QModelIndex & index, int role) const {
     return QVariant();
 }
 
-bool WoodModel::saveProfile(int id, QString name, QString image)
+bool WoodModel::saveProfile(int id, QString name, QImage image)
 {
     if (id == -2) {
         addProfile(Wood(name, image));

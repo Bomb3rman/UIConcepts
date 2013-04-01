@@ -20,8 +20,10 @@ bool XMLAccess::readProfilesXML(WoodModel *model)
     qDebug() << "Parsing content" << doc.setContent(&xmlFile);
     QDomElement element = doc.documentElement();
     for(QDomElement n = element.firstChildElement(); !n.isNull(); n = n.nextSiblingElement()) {
-        Wood newWoodElement(n.firstChildElement("name").text(),
-                            "file:" + woodProfileDir.absolutePath() + "/" + n.firstChildElement("img").text());
+        QImage img(woodProfileDir.absolutePath() + "/" + n.firstChildElement("img").text());
+        qDebug() << "Image could not be loaded" << img.isNull() <<
+                    woodProfileDir.absolutePath() + "/" + n.firstChildElement("img").text();
+        Wood newWoodElement(n.firstChildElement("name").text(), img);
         model->addProfile(newWoodElement);
     }
     return true;

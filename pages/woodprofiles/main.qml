@@ -41,7 +41,7 @@ MMKPage {
                     NumberAnimation {duration: 200; easing.type: Easing.InOutSine}
                 }
                 property string name: model.name
-                property string image: model.image
+                property var image: model.image
                 MouseArea {
                     id: mArea2
                     anchors.fill: parent
@@ -59,7 +59,7 @@ MMKPage {
                     anchors.topMargin: 10
                     anchors.left: parent.left
                     anchors.leftMargin: 5
-                    source: parent.image
+                    source: "image://woodprofiles/"+index
                 }
                 Text {
                     anchors.bottom: parent.bottom
@@ -180,7 +180,7 @@ MMKPage {
             }
             TextField {
                 id: profileImage
-                text: rootPage.marked >= 0 ? woodProfiles.itemAt(rootPage.marked).image : ""
+                text: ""//rootPage.marked >= 0 ? woodProfiles.itemAt(rootPage.marked).image : ""
                 style: MMKTextField{}
                 Layout.row: 1
                 Layout.column: 1
@@ -191,7 +191,7 @@ MMKPage {
             anchors.top: parent.top
             anchors.right: parent.right
             anchors.margins: 20
-            source: rootPage.marked >= 0 ? woodProfiles.itemAt(rootPage.marked).image : ""
+            source: rootPage.marked >= 0 ? "image://woodprofiles/"+rootPage.marked : ""// woodProfiles.itemAt(rootPage.marked).image : ""
             height: 150
             width: 150
         }
