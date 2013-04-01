@@ -2,6 +2,8 @@
 #define DATAHANDLING_H
 
 #include "datahandling_global.h"
+#include <QString>
+#include "woodmodel.h"
 
 class DATAHANDLINGSHARED_EXPORT Datahandling
 {
@@ -9,12 +11,12 @@ public:
     Datahandling();
 
     //Wood profiles
-    void addProfile();
-    void changeProfile(int id);
-    void removeProfile(int id);
+    static WoodModel *createProfilesModel();
 
     //Login
     bool checkLogin(QString username, QString password);
+private:
+    static WoodModel *profilesModel;
 };
 
 #endif // DATAHANDLING_H

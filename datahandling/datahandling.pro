@@ -1,6 +1,8 @@
 TARGET = datahandling
 TEMPLATE = lib
 
+QT += xml
+
 DESTDIR = ../plugins
 
 DEFINES += DATAHANDLING_LIBRARY
@@ -11,7 +13,9 @@ HEADERS += datahandling.h\
         datahandling_global.h
 
 HEADERS += \
-    wood.h
+    wood.h \
+    woodmodel.h
 
 SOURCES += \
-    wood.cpp
+    wood.cpp \
+    woodmodel.cpp

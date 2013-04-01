@@ -1,10 +1,8 @@
 TEMPLATE = lib
 
-LIBS *= -L../../plugins -lpageplugin
+LIBS *= -L../../plugins -lpageplugin -ldatahandling
 
 QT += quick xml
-
-LIBS += -L../../plugins -ldatahandling
 
 include(../plugins.pri)
 
@@ -25,9 +23,3 @@ RESOURCES += \
 
 OTHER_FILES += \
     main.qml
-
-HEADERS += \
-    woodmodel.h
-
-SOURCES += \
-    woodmodel.cpp

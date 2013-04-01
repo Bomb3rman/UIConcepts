@@ -1,38 +1,18 @@
 #include "dummypage.h"
-#include <QDomDocument>
-#include <QFile>
+#include <../../datahandling/datahandling.h>
 #include <QQmlContext>
-#include <QDir>
 
 DummyPage::DummyPage(QObject *parent) :
     PagePlugin(parent)
 {
-    woodModel = new WoodModel();
     m_componentUrl.setUrl("qrc:/woodprofiles/main.qml");
-    QDir woodProfileDir("../assets/woodprofiles/");
-    QFile xmlFile(woodProfileDir.absolutePath() + "/woodprofiles.xml");
-    qDebug() <<xmlFile.fileName();
-    xmlFile.open(QIODevice::ReadWrite);
-    if (!xmlFile.isOpen()) {
-        qWarning() << "Could not open XML wood profile file";
-        return;
-    }
-    QDomDocument doc;
-    qDebug() << "Parsing content" << doc.setContent(&xmlFile);
-    QDomElement element = doc.documentElement();
-    for(QDomElement n = element.firstChildElement(); !n.isNull(); n = n.nextSiblingElement())
-     {
-        Wood newWoodElement(n.firstChildElement("name").text(),
-                            "file:" + woodProfileDir.absolutePath() + "/" + n.firstChildElement("img").text());
-        woodModel->addProfile(newWoodElement);
-     }
+    woodModel = Datahandling::createProfilesModel();
     connect(this, SIGNAL(engineChanged()), this, SLOT(setModel()), Qt::DirectConnection);
     //Has to be direct connection otherwise the model will not be set
 }
 
 DummyPage::~DummyPage()
 {
-    delete woodModel;
 }
 
 QString DummyPage::getBasicInfo()

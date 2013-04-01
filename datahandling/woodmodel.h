@@ -5,7 +5,7 @@
 #include <QStringList>
 #include <QImage>
 #include <QUrl>
-#include "../../datahandling/wood.h"
+#include "wood.h"
 
 class WoodModel : public QAbstractListModel
 {

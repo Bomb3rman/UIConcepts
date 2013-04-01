@@ -21,6 +21,7 @@ PageModel::PageModel(QQmlEngine *engine, QObject *rootObj) :
             QObject *obj = loader.instance();
             if (obj == 0) {
                 qWarning() << "Error loading Page plugin" << plugin;
+                qWarning() << loader.errorString();
                 continue;
             }
             PagePlugin *pPlugin = qobject_cast<PagePlugin*>(obj);

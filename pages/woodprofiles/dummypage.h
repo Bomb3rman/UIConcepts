@@ -2,7 +2,7 @@
 #define DUMMYPAGE_H
 
 #include "../pageplugin/pageplugin.h"
-#include "woodmodel.h"
+#include <../../datahandling/woodmodel.h>
 
 class DummyPage : public PagePlugin
 {
