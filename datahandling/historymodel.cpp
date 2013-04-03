@@ -1,4 +1,4 @@
-#include "historymodel.h"
+#include <historymodel.h>
 #include <QDebug>
 #include <xmlaccess.h>
 

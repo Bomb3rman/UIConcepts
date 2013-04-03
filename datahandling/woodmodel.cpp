@@ -1,4 +1,4 @@
-#include "woodmodel.h"
+#include <woodmodel.h>
 #include <QDebug>
 #include <xmlaccess.h>
 
@@ -14,6 +14,8 @@ WoodModel::WoodModel(QObject *parent)
 
 QImage WoodModel::requestImage(const QString & id, QSize * size, const QSize & requestedSize)
 {
+    Q_UNUSED(size)
+    Q_UNUSED(requestedSize)
     int row = id.toInt();
     if (row < 0 && row >= rowCount())
         return QImage();

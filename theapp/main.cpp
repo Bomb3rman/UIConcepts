@@ -1,6 +1,4 @@
-#include <QtGui/QGuiApplication>
 #include <QApplication>
-//#include "qtquick2applicationviewer.h"
 #include <QQuickView>
 #include <QPluginLoader>
 #include <QDebug>

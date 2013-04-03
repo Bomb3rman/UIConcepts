@@ -1,4 +1,4 @@
-#include "dummypage.h"
+#include <dummypage.h>
 
 DummyPage::DummyPage(QObject *parent) :
     PagePlugin(parent)

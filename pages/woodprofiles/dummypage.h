@@ -1,7 +1,7 @@
 #ifndef DUMMYPAGE_H
 #define DUMMYPAGE_H
 
-#include "../pageplugin/pageplugin.h"
+#include <../pageplugin/pageplugin.h>
 #include <../../datahandling/woodmodel.h>
 
 class WoodProfilesPage : public PagePlugin

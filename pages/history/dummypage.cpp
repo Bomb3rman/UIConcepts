@@ -1,4 +1,4 @@
-#include "dummypage.h"
+#include <dummypage.h>
 #include <QQmlContext>
 
 HistoryPage::HistoryPage(QObject *parent) :
