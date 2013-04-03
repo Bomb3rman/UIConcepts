@@ -1,17 +1,17 @@
 #include "dummypage.h"
 
-DummyPage::DummyPage(QObject *parent) :
+SystemPPage::SystemPPage(QObject *parent) :
     PagePlugin(parent)
 {
     m_componentUrl.setUrl("qrc:/systemparameters/main.qml");
 }
 
-QString DummyPage::getBasicInfo()
+QString SystemPPage::getBasicInfo()
 {
     return "System parameters";
 }
 
-QString DummyPage::getExtendedInfo()
+QString SystemPPage::getExtendedInfo()
 {
     return "ExtendedInfo\nMore Info\nnoch mehr";
 }

@@ -4,13 +4,13 @@
 #include "../pageplugin/pageplugin.h"
 #include <../../datahandling/woodmodel.h>
 
-class DummyPage : public PagePlugin
+class WoodProfilesPage : public PagePlugin
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "org.project.woodprofiles" FILE "woodprofiles.json")
 public:
-    DummyPage(QObject *parent = 0);
-    ~DummyPage();
+    WoodProfilesPage(QObject *parent = 0);
+    ~WoodProfilesPage();
 
     QString getBasicInfo();
     QString getExtendedInfo();

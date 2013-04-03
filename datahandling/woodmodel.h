@@ -23,13 +23,13 @@ public:
     //The imgae provider
     QImage requestImage(const QString & id, QSize * size, const QSize & requestedSize);
 
-    void addProfile(const Wood &animal);
+    void addProfile(const Wood &profile);
 
     int rowCount(const QModelIndex & parent = QModelIndex()) const;
 
     QVariant data(const QModelIndex & index, int role = Qt::DisplayRole) const;
 
-    Q_INVOKABLE bool saveProfile(int id, QString name, QImage image);
+    Q_INVOKABLE bool saveProfile(int id, QString name, QString image);
 
     int activeProfile();
 

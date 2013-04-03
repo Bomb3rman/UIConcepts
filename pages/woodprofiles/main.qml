@@ -179,7 +179,6 @@ MMKPage {
                 Layout.column: 0
             }
             TextField {
-                id: profileImage
                 text: ""//rootPage.marked >= 0 ? woodProfiles.itemAt(rootPage.marked).image : ""
                 style: MMKTextField{}
                 Layout.row: 1
@@ -188,6 +187,7 @@ MMKPage {
         }
 
         Image {
+            id: profileImage
             anchors.top: parent.top
             anchors.right: parent.right
             anchors.margins: 20
@@ -204,7 +204,7 @@ MMKPage {
             text: "save"
             style: MMKButton{}
             onClicked: {
-                woodModel.saveProfile(rootPage.marked, profileName.text, profileImage.text);
+                woodModel.saveProfile(rootPage.marked, profileName.text, profileImage.source);
                 rootPage.marked = -1
             }
         }

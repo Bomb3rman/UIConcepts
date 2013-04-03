@@ -2,16 +2,23 @@
 #define DUMMYPAGE_H
 
 #include "../pageplugin/pageplugin.h"
+#include "../../datahandling/historymodel.h"
 
-class DummyPage : public PagePlugin
+class HistoryPage : public PagePlugin
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "org.project.history" FILE "history.json")
 public:
-    DummyPage(QObject *parent = 0);
+    HistoryPage(QObject *parent = 0);
 
     QString getBasicInfo();
     QString getExtendedInfo();
+
+public Q_SLOTS:
+    void setModel();
+
+private:
+    HistoryModel *historyModel;
 };
 
 #endif // DUMMYPAGE_H

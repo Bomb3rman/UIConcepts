@@ -1,17 +1,17 @@
 #include "dummypage.h"
 
-DummyPage::DummyPage(QObject *parent) :
+MachinePPage::MachinePPage(QObject *parent) :
     PagePlugin(parent)
 {
     m_componentUrl.setUrl("qrc:/machineparameters/main.qml");
 }
 
-QString DummyPage::getBasicInfo()
+QString MachinePPage::getBasicInfo()
 {
     return "Machine Parameters";
 }
 
-QString DummyPage::getExtendedInfo()
+QString MachinePPage::getExtendedInfo()
 {
     return "Machine is on\nblabla\nblablabla";
 }

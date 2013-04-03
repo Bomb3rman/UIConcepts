@@ -11,10 +11,14 @@ public:
     Wood(const QString &name, const QImage &img);
 
     QString name() const;
-    QImage image() const;
+    QImage image() const; 
 
 private:
     QString m_name;
     QImage m_img;
+    float velocity;
+    float quality;
+    float weight;
+
 };
 #endif // WOOD_H

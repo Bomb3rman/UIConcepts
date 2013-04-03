@@ -2,7 +2,7 @@
 #include <../../datahandling/datahandling.h>
 #include <QQmlContext>
 
-DummyPage::DummyPage(QObject *parent) :
+WoodProfilesPage::WoodProfilesPage(QObject *parent) :
     PagePlugin(parent)
 {
     m_componentUrl.setUrl("qrc:/woodprofiles/main.qml");
@@ -11,21 +11,21 @@ DummyPage::DummyPage(QObject *parent) :
     //Has to be direct connection otherwise the model will not be set
 }
 
-DummyPage::~DummyPage()
+WoodProfilesPage::~WoodProfilesPage()
 {
 }
 
-QString DummyPage::getBasicInfo()
+QString WoodProfilesPage::getBasicInfo()
 {
     return "Woodprofiles";
 }
 
-QString DummyPage::getExtendedInfo()
+QString WoodProfilesPage::getExtendedInfo()
 {
     return "4 active profiles\n50 saved profiles";
 }
 
-void DummyPage::setModel()
+void WoodProfilesPage::setModel()
 {
     qDebug() << "Setting wood model";
     m_engine->rootContext()->setContextProperty("woodModel", woodModel);

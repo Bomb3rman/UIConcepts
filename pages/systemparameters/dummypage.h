@@ -3,12 +3,12 @@
 
 #include "../pageplugin/pageplugin.h"
 
-class DummyPage : public PagePlugin
+class SystemPPage : public PagePlugin
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "org.project.systemparameters" FILE "systemparameters.json")
 public:
-    DummyPage(QObject *parent = 0);
+    SystemPPage(QObject *parent = 0);
 
     QString getBasicInfo();
     QString getExtendedInfo();

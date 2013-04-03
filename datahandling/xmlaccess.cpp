@@ -48,8 +48,14 @@ bool XMLAccess::saveProfilesXML(WoodModel *model)
         attribute.appendChild(text);
         newProfile.appendChild(attribute);
 
+        QImage img = model->data(model->index(i), WoodModel::ImageRole).value<QImage>();
+        QString imgFilename = woodProfileDir.absolutePath() + "/" + QString::number(i) + ".jpg";
+        if (!img.save(imgFilename)) {
+            qWarning() << "Could not save image file" << imgFilename;
+        }
+
         attribute = doc.createElement("img");
-        text = doc.createTextNode(model->data(model->index(i), WoodModel::ImageRole).toString());
+        text = doc.createTextNode(QString::number(i) + ".jpg");
         attribute.appendChild(text);
         newProfile.appendChild(attribute);
 

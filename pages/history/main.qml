@@ -10,6 +10,6 @@ MMKPage {
         font.bold: true
         font.pixelSize: 30
         color: "white"
-        text: "History"
+        text: "Liste mit Sachen drin. \n Mit ausfahrbarem Menue.\n Informationen zu dem Brett"
     }
 }

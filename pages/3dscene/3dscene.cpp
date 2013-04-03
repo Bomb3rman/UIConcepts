@@ -1,17 +1,17 @@
 #include "3dscene.h"
 
-DummyPage::DummyPage(QObject *parent) :
+Scene3DPage::Scene3DPage(QObject *parent) :
     PagePlugin(parent)
 {
     m_componentUrl.setUrl("qrc:/3dscene/main.qml");
 }
 
-QString DummyPage::getBasicInfo()
+QString Scene3DPage::getBasicInfo()
 {
     return "3D Scene";
 }
 
-QString DummyPage::getExtendedInfo()
+QString Scene3DPage::getExtendedInfo()
 {
     return "ExtendedInfo\nMore Info\nnoch mehr";
 }

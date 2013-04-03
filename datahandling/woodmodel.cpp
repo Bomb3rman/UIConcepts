@@ -7,6 +7,8 @@ WoodModel::WoodModel(QObject *parent)
 {
 #if defined(USE_XML)
     XMLAccess::readProfilesXML(this);
+#else
+
 #endif
 }
 
@@ -44,8 +46,9 @@ QVariant WoodModel::data(const QModelIndex & index, int role) const {
     return QVariant();
 }
 
-bool WoodModel::saveProfile(int id, QString name, QImage image)
+bool WoodModel::saveProfile(int id, QString name, QString imagesrc)
 {
+    QImage image = requestImage(imagesrc.split("/").last(), 0, QSize());
     if (id == -2) {
         addProfile(Wood(name, image));
         return true;
@@ -56,7 +59,9 @@ bool WoodModel::saveProfile(int id, QString name, QImage image)
     m_wood[id] = Wood(name, image);
     Q_EMIT dataChanged(index(id), index(id));
 
+#if defined(USE_XML)
     XMLAccess::saveProfilesXML(this);
+#endif
     return true;
 }
 

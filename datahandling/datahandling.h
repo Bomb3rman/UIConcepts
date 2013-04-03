@@ -14,7 +14,7 @@ public:
     static WoodModel *createProfilesModel();
 
     //Login
-    bool checkLogin(QString username, QString password);
+    bool checkLogin(QString username, QString password); //TODO save mode
 private:
     static WoodModel *profilesModel;
 };

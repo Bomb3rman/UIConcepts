@@ -25,3 +25,9 @@ HEADERS += \
 
 SOURCES += \
     xmlaccess.cpp
+
+HEADERS += \
+    historymodel.h
+
+SOURCES += \
+    historymodel.cpp

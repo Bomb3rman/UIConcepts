@@ -95,7 +95,7 @@ Rectangle {
             NumberAnimation {duration: 400; easing.type: Easing.InQuart }
         }
 
-        state: "loggedIn"
+        state: "login"
 
         states: [
             State {
