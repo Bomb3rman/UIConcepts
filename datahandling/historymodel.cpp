@@ -80,7 +80,7 @@ QHash<int, QByteArray> HistoryModel::roleNames() const {
     QHash<int, QByteArray> roles;
     roles[PlankRole] = "plank";
     roles[TextRole] = "text";
-    roles[CorrectionsRole] = "correction";
+    roles[CorrectionsRole] = "corrections";
     roles[StartRole] = "start";
     roles[EndRole] = "end";
     return roles;

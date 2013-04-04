@@ -90,11 +90,9 @@ bool XMLAccess::readHistory(HistoryModel *model)
                             QDateTime::fromString(n.firstChildElement("start").text(), Qt::ISODate),
                             QDateTime::fromString(n.firstChildElement("end").text(), Qt::ISODate));
 
-        qDebug() << "Time" << n.firstChildElement("start").text() << QDateTime::fromString(n.firstChildElement("start").text(), Qt::ISODate);
-        QDomElement correctionElement = element.firstChildElement("corrections");
+        QDomElement correctionElement = n.firstChildElement("corrections");
         for(QDomElement c = correctionElement.firstChildElement(); !c.isNull(); c = c.nextSiblingElement()) {
             newHistoryElement.addCorrection(c.text());
-            qDebug() << "Corrections:" << c.text();
         }
         model->addElement(newHistoryElement);
     }

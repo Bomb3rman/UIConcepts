@@ -6,21 +6,24 @@ import QtQuick.Controls.Styles 1.0
 MMKPage {
     id: rootPage
     Text {
-        anchors.centerIn: parent
+        id: title
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.margins: 10
         font.bold: true
         font.pixelSize: 30
         color: "white"
-        text: "Liste mit Sachen drin. \n Mit ausfahrbarem Menue.\n
-            Informationen zu dem Brett"
+        text: "History"
     }
 
     ListView {
         id: lView
         anchors.fill: parent
-        anchors.topMargin: 200
+        anchors.topMargin: 130
         anchors.margins: 30
         model: historyModel
         delegate: Rectangle {
+            radius: 3
             height: state == "minimized" ? 50 : 150
             width: lView.width
             clip: true
@@ -32,6 +35,7 @@ MMKPage {
                 id: title
                 color: "white"
                 font.pixelSize: 20
+                font.bold: true
                 text: model.plank
                 anchors.left: parent.left
                 anchors.top: parent.top
@@ -40,20 +44,50 @@ MMKPage {
             Text {
                 id: text
                 color: "white"
-                font.pixelSize: 20
+                font.pixelSize: 15
                 text: model.text
                 anchors.left: parent.left
                 anchors.top: title.bottom
                 anchors.margins: 10
             }
             Text {
+                id: correctionsTitle
+                color: "white"
+                font.pixelSize: 15
+                font.bold: true
+                text: "Corrections:"
+                anchors.left: parent.left
+                anchors.top: text.bottom
+                anchors.margins: 10
+            }
+            Text {
                 id: date
                 color: "white"
                 font.pixelSize: 15
-                text: model.start + " - " + model.end
+                text: Qt.formatDateTime(model.start, "dd.MM.yyyy hh:mm") + " - " + Qt.formatDateTime(model.end, "dd.MM.yyyy hh:mm")
                 anchors.right: parent.right
                 anchors.top: parent.top
                 anchors.margins: 10
+            }
+
+            property var stringList: model.corrections
+
+            Column {
+                anchors.left: parent.left
+                anchors.right: parent.right
+                anchors.top: correctionsTitle.bottom
+                anchors.leftMargin: 20
+                anchors.rightMargin: 20
+                anchors.topMargin: 5
+                height: 80
+                Repeater {
+                    model: stringList
+                    delegate: Text {
+                        text: modelData
+                        color: "white"
+                        font.pixelSize: 14
+                    }
+                }
             }
 
             Behavior on height {
@@ -63,7 +97,6 @@ MMKPage {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    print("clicked")
                     if(parent.state == "minimized")
                         parent.state = "maximized";
                     else
