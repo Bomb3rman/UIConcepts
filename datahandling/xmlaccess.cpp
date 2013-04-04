@@ -87,8 +87,10 @@ bool XMLAccess::readHistory(HistoryModel *model)
     for(QDomElement n = element.firstChildElement(); !n.isNull(); n = n.nextSiblingElement()) {
         HistoryElement newHistoryElement(n.firstChildElement("plank").text(),
                             n.firstChildElement("text").text(),
-                            QDateTime::fromString(n.firstChildElement("start").text()),
-                            QDateTime::fromString(n.firstChildElement("end").text()));
+                            QDateTime::fromString(n.firstChildElement("start").text(), Qt::ISODate),
+                            QDateTime::fromString(n.firstChildElement("end").text(), Qt::ISODate));
+
+        qDebug() << "Time" << n.firstChildElement("start").text() << QDateTime::fromString(n.firstChildElement("start").text(), Qt::ISODate);
         QDomElement correctionElement = element.firstChildElement("corrections");
         for(QDomElement c = correctionElement.firstChildElement(); !c.isNull(); c = c.nextSiblingElement()) {
             newHistoryElement.addCorrection(c.text());

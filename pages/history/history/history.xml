@@ -1,8 +1,8 @@
 <history>
   <element>
     <plank>Erstes Brett</plank>
-    <start>2013-04-2T19:20:30+01:00</start>
-    <end>2013-04-2T20:10:30+01:00</end>
+    <start>2013-04-02T19:20:30+01:00</start>
+    <end>2013-04-02T20:10:30+01:00</end>
     <text>This is a description</text>
     <corrections>
       <correction>rechts/oben</correction>
@@ -11,8 +11,8 @@
   </element>
   <element>
     <plank>Zweites Brett</plank>
-    <start>2013-04-2T16:20:30+01:00</start>
-    <end>2013-04-2T17:10:30+01:00</end>
+    <start>2013-04-02T16:20:30+01:00</start>
+    <end>2013-04-02T17:10:30+01:00</end>
     <text>This is another description</text>
     <corrections>
       <correction>mitte/oben</correction>
@@ -21,8 +21,8 @@
   </element>
     <element>
     <plank>Drittes Brett</plank>
-    <start>2013-04-2T14:20:30+01:00</start>
-    <end>2013-04-2T15:10:30+01:00</end>
+    <start>2013-04-02T14:20:30+01:00</start>
+    <end>2013-04-02T15:10:30+01:00</end>
     <text>This is again another description</text>
     <corrections>
       <correction>mitte/rechts</correction>
@@ -31,8 +31,8 @@
   </element>
     <element>
     <plank>viertes Brett</plank>
-    <start>2013-04-2T12:20:30+01:00</start>
-    <end>2013-04-2T17:13:30+01:00</end>
+    <start>2013-04-02T12:20:30+01:00</start>
+    <end>2013-04-02T17:13:30+01:00</end>
     <text>This is a completely different but cooler one!!!!!!</text>
     <corrections>
       <correction>mitte/links</correction>
