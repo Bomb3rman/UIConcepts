@@ -18,7 +18,7 @@ public Q_SLOTS:
     void setModel();
 
 private:
-    HistoryModel *historyModel;
+    HistoryModel *m_historyModel;
 };
 
 #endif // DUMMYPAGE_H

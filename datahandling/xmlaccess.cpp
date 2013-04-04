@@ -6,6 +6,8 @@
 #include <QDomElement>
 
 QDir woodProfileDir("../assets/woodprofiles/");
+QDir historyDir("../assets/history/");
+
 
 bool XMLAccess::readProfilesXML(WoodModel *model)
 {
@@ -17,12 +19,11 @@ bool XMLAccess::readProfilesXML(WoodModel *model)
         return false;
     }
     QDomDocument doc;
-    qDebug() << "Parsing content" << doc.setContent(&xmlFile);
     QDomElement element = doc.documentElement();
     for(QDomElement n = element.firstChildElement(); !n.isNull(); n = n.nextSiblingElement()) {
         QImage img(woodProfileDir.absolutePath() + "/" + n.firstChildElement("img").text());
-        qDebug() << "Image could not be loaded" << img.isNull() <<
-                    woodProfileDir.absolutePath() + "/" + n.firstChildElement("img").text();
+        if (img.isNull())
+            qDebug() << "Image could not be loaded" << woodProfileDir.absolutePath() + "/" + n.firstChildElement("img").text();
         Wood newWoodElement(n.firstChildElement("name").text(), img);
         model->addProfile(newWoodElement);
     }
@@ -69,4 +70,36 @@ bool XMLAccess::saveProfilesXML(WoodModel *model)
     }
 
     return true;
+}
+
+bool XMLAccess::readHistory(HistoryModel *model)
+{
+    QFile xmlFile(historyDir.absolutePath() + "/history.xml");
+    qDebug() <<xmlFile.fileName();
+    xmlFile.open(QIODevice::ReadOnly);
+    if (!xmlFile.isOpen()) {
+        qWarning() << "Could not open XML history file";
+        return false;
+    }
+    QDomDocument doc;
+    qDebug() << "Parsing content" << doc.setContent(&xmlFile);
+    QDomElement element = doc.documentElement();
+    for(QDomElement n = element.firstChildElement(); !n.isNull(); n = n.nextSiblingElement()) {
+        HistoryElement newHistoryElement(n.firstChildElement("plank").text(),
+                            n.firstChildElement("text").text(),
+                            QDateTime::fromString(n.firstChildElement("start").text()),
+                            QDateTime::fromString(n.firstChildElement("end").text()));
+        QDomElement correctionElement = element.firstChildElement("corrections");
+        for(QDomElement c = correctionElement.firstChildElement(); !c.isNull(); c = c.nextSiblingElement()) {
+            newHistoryElement.addCorrection(c.text());
+            qDebug() << "Corrections:" << c.text();
+        }
+        model->addElement(newHistoryElement);
+    }
+    return true;
+}
+
+bool XMLAccess::saveHistory(HistoryModel *model)
+{
+    return false;
 }

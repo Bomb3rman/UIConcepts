@@ -13,6 +13,13 @@ WoodModel *Datahandling::Datahandling::createProfilesModel()
     profilesModel = new WoodModel();
     return profilesModel;
 }
+
+HistoryModel *Datahandling::createHistoryModel()
+{
+    historyModel = new HistoryModel();
+    return historyModel;
+}
+
 //Login
 bool Datahandling::checkLogin(QString username, QString password)
 {
@@ -23,3 +30,4 @@ bool Datahandling::checkLogin(QString username, QString password)
 }
 
 WoodModel *Datahandling::profilesModel = 0;
+HistoryModel *Datahandling::historyModel = 0;

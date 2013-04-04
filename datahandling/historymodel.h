@@ -2,19 +2,28 @@
 #define HISTORYMODEL_H
 
 #include <QAbstractListModel>
+#include <QDateTime>
+#include <QStringList>
 
 class Q_DECL_EXPORT HistoryElement
 {
 public:
-    HistoryElement(const QString &name, const QString &text);
+    HistoryElement(const QString &plank, const QString &text, const QDateTime start, const QDateTime end);
 
-    QString name() const;
+    QString plank() const;
 
     QString text() const;
+    QStringList getCorrections() const;
+    QDateTime start() const;
+    QDateTime end() const;
+    void addCorrection(QString correction);
 
 private:
-    QString m_name;
+    QString m_plank;
     QString m_text;
+    QDateTime m_start;
+    QDateTime m_end;
+    QStringList m_corrections;
 };
 
 class HistoryModel : public QAbstractListModel
@@ -22,8 +31,11 @@ class HistoryModel : public QAbstractListModel
     Q_OBJECT
 public:
     enum HistoryRoles {
-        NameRole = Qt::UserRole + 1,
-        TextRole
+        PlankRole = Qt::UserRole + 1,
+        TextRole,
+        CorrectionsRole,
+        StartRole,
+        EndRole
     };
 
     HistoryModel(QObject *parent = 0);
