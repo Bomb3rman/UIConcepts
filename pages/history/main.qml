@@ -30,7 +30,7 @@ MMKPage {
             border.color: "black"
             border.width: 2
             opacity: 0.7
-            color: "darkgrey"
+            color: "#1b1c1e"
             Text {
                 id: title
                 color: "white"
@@ -48,7 +48,7 @@ MMKPage {
                 text: model.text
                 anchors.left: parent.left
                 anchors.top: title.bottom
-                anchors.margins: 10
+                anchors.margins: 12
             }
             Text {
                 id: correctionsTitle

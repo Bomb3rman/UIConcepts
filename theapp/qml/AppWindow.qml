@@ -4,6 +4,7 @@ import QtQuick.Controls 1.0
 import QtQuick.Controls.Styles 1.0
 
 Rectangle {
+    id: rootApp
     property Component buttonStyle: MMKButton{}
     property Component radioBStyle: MMKCheckBox{}
     property Component sliderStyle: MMKSlider{}
@@ -13,6 +14,17 @@ Rectangle {
     property Component progressStyle: MMKProgressBar{}
     property Component radioStyle: MMKRadioButton{}
     //property Component gboxStyle: MMKGroupBox{}
+    Text {
+        z: 1
+        text: "Safemode"
+        anchors.left: parent.left
+        anchors.top: parent.top
+        anchors.margins: 15
+        font.pixelSize: 20
+        color: "red"
+        font.bold: true
+        visible: datahandling.safeMode
+    }
 
     Rectangle {
         id: loginscreen
@@ -30,6 +42,7 @@ Rectangle {
             TextField{
                 id: username
                 style: textFieldStyle
+                width: 230
             }
             Item {
                 height: 20
@@ -45,6 +58,7 @@ Rectangle {
                 id: password
                 style: textFieldStyle
                 echoMode: TextInput.Password
+                width: 230
             }
             Item {
                 height: 10
@@ -71,20 +85,36 @@ Rectangle {
                 }
             }
 
-            Button {
-                width: 100
-                height: 30
+            Row {
                 anchors.right: parent.right
-                style: buttonStyle
-                text: "Login"
-                onClicked: {
-                    if (username.text === "admin" &&
-                            password.text === "bitch") {
+                spacing: 10
+                Button {
+                    width: 100
+                    height: 30
+                    style: buttonStyle
+                    text: "Login"
+                    onClicked: {
+                        if (username.text === "admin" &&
+                                password.text === "bitch") {
+                            loginscreen.visible = false;
+                            loginscreen.state = "loggedIn"
+                        } else {
+                            loginscreen.state = "loginFailed"
+                            loginFailedAnimation.start()
+                        }
+                    }
+                }
+                Button {
+                    width: 100
+                    height: 30
+                    style: buttonStyle
+                    text: "Safemode"
+                    onClicked: {
                         loginscreen.visible = false;
+                        print ("Setting safemode:" + datahandling.safeMode)
+                        datahandling.safeMode = true
+                        print(datahandling.safeMode)
                         loginscreen.state = "loggedIn"
-                    } else {
-                        loginscreen.state = "loginFailed"
-                        loginFailedAnimation.start()
                     }
                 }
             }

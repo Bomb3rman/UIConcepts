@@ -10,6 +10,6 @@ MMKPage {
         font.bold: true
         font.pixelSize: 30
         color: "white"
-        text: "!!!DUMMY PAGE..Bitch!!!"
+        text: "DUMMY PAGE"
     }
 }

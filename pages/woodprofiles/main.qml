@@ -198,6 +198,7 @@ MMKPage {
 
         Button {
             id: saveButton
+            visible: datahandling.safeMode ? false : true
             anchors.right: parent.right
             anchors.bottom: parent.bottom
             anchors.margins: 30
@@ -210,7 +211,7 @@ MMKPage {
         }
         Button {
             id: dismissButton
-            anchors.right: saveButton.left
+            anchors.right: datahandling.safeMode ? parent.right :saveButton.left
             anchors.bottom: parent.bottom
             anchors.margins: 30
             text: "dismiss"
@@ -218,7 +219,7 @@ MMKPage {
             onClicked: rootPage.marked = -1
         }
         Button {
-            visible: rootPage.marked !== -2
+            visible: datahandling.safeMode ? false : rootPage.marked !== -2
             anchors.right: dismissButton.left
             anchors.bottom: parent.bottom
             anchors.margins: 30

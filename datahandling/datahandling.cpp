@@ -8,16 +8,22 @@ Datahandling::Datahandling()
 {
 }
 
-WoodModel *Datahandling::Datahandling::createProfilesModel()
+WoodModel *Datahandling::createProfilesModel()
 {
     profilesModel = new WoodModel();
     return profilesModel;
 }
 
-HistoryModel *Datahandling::createHistoryModel()
+QAbstractItemModel *Datahandling::createHistoryModel()
 {
     historyModel = new HistoryModel();
-    return historyModel;
+    proxyModel = new QSortFilterProxyModel();
+    proxyModel->setSourceModel(historyModel);
+    proxyModel->setSortCaseSensitivity(Qt::CaseSensitive);
+    proxyModel->setSortRole(HistoryModel::TextRole);
+    proxyModel->sort(0);
+
+    return proxyModel;
 }
 
 //Login
@@ -29,5 +35,14 @@ bool Datahandling::checkLogin(QString username, QString password)
     return false;
 }
 
+void Datahandling::setSafeModeEnabled(bool state)
+{
+    m_safeModeEnabled = state;
+    Q_EMIT safeModeEnabledChanged();
+}
+
 WoodModel *Datahandling::profilesModel = 0;
 HistoryModel *Datahandling::historyModel = 0;
+QSortFilterProxyModel *Datahandling::proxyModel = 0;
+bool Datahandling::m_safeModeEnabled = false;
+QQmlContext *Datahandling::m_context = 0;

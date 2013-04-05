@@ -2,7 +2,7 @@
 #define DUMMYPAGE_H
 
 #include <../pageplugin/pageplugin.h>
-#include <../../datahandling/historymodel.h>
+#include <QAbstractItemModel>
 
 class HistoryPage : public PagePlugin
 {
@@ -18,7 +18,7 @@ public Q_SLOTS:
     void setModel();
 
 private:
-    HistoryModel *m_historyModel;
+    QAbstractItemModel *m_historyModel;
 };
 
 #endif // DUMMYPAGE_H

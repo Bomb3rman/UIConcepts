@@ -19,7 +19,9 @@ bool XMLAccess::readProfilesXML(WoodModel *model)
         return false;
     }
     QDomDocument doc;
+    doc.setContent(&xmlFile);
     QDomElement element = doc.documentElement();
+    qDebug() << element.firstChildElement("profile").isNull();
     for(QDomElement n = element.firstChildElement(); !n.isNull(); n = n.nextSiblingElement()) {
         QImage img(woodProfileDir.absolutePath() + "/" + n.firstChildElement("img").text());
         if (img.isNull())

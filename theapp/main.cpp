@@ -5,6 +5,7 @@
 #include <pagemodel.h>
 #include <QQmlContext>
 #include <QPalette>
+#include "../datahandling/datahandling.h"
 
 int main(int argc, char *argv[])
 {
@@ -18,6 +19,7 @@ int main(int argc, char *argv[])
     QSurfaceFormat format;
     format.setSamples(4);
     viewer.engine()->addImportPath("../plugins/qml");
+    viewer.rootContext()->setContextProperty("datahandling", new Datahandling());
     PageModel pageLoader(viewer.engine(), viewer.rootObject());
     viewer.rootContext()->setContextProperty("pageModel", &pageLoader);
     viewer.setSource(QUrl("qml/concept3.qml"));

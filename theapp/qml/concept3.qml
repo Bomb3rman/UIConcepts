@@ -35,20 +35,6 @@ AppWindow {
                         }
                     }
                 }
-//        TabView {
-//            anchors.fill: parent
-//            style: tabViewStyle
-//            Tab {
-//                title: "Buttons"
-//            }
-//            Tab {
-//                title: "Sliders"
-//            }
-//            Tab {
-//                title: "Progress"
-//                Rectangle {color: "blue"}
-//            }
-//        }
     }
 
     Rectangle {
@@ -59,28 +45,40 @@ AppWindow {
         anchors.top: parent.top
         anchors.bottom: parent.bottom
 
-        Rectangle {
-            id: service
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.top: parent.top
-            anchors.margins: 10
-            height: 200
-            border.color: "black"
-            border.width: 2
-            Image {
-                source: "pics/service.png"
-                anchors.fill: parent
-                anchors.margins: 2
+        TabView {
+            anchors.topMargin: 50
+            anchors.fill: parent
+            style: tabViewStyle
+            Tab {
+                title: "Info"
+            }
+            Tab {
+                title: "Notifications"
             }
         }
 
+//        Rectangle {
+//            id: service
+//            anchors.left: parent.left
+//            anchors.right: parent.right
+//            anchors.top: parent.top
+//            anchors.margins: 10
+//            height: 200
+//            border.color: "black"
+//            border.width: 2
+//            Image {
+//                source: "pics/service.png"
+//                anchors.fill: parent
+//                anchors.margins: 2
+//            }
+//        }
+
         Label {
             id: title
-            anchors.top: service.bottom
+            anchors.top: parent.top
             anchors.left: parent.left
-            anchors.margins: 10
-            text: "The title"
+            anchors.margins: 20
+            text: "Servicebar"
             font.family: myFont.name
             font.pixelSize: 20
         }

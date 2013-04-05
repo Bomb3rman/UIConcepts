@@ -18,7 +18,7 @@ SOURCES += main.cpp \
 
 INCLUDEPATH += ../pages/pageplugin
 
-LIBS += -L../plugins -lpageplugin
+LIBS += -L../plugins -lpageplugin -ldatahandling
 
 QT += quick widgets
 
