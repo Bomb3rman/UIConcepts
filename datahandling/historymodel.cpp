@@ -1,6 +1,6 @@
-#include <historymodel.h>
+#include "historymodel.h"
 #include <QDebug>
-#include <xmlaccess.h>
+#include "xmlaccess.h"
 
 HistoryElement::HistoryElement(const QString &plank, const QString &text, const QDateTime start, const QDateTime end) :
     m_plank(plank), m_text(text), m_start(start), m_end(end)

@@ -117,3 +117,15 @@ MMKPage {
         }
     }
 }
+
+/* Corrections:
+  - art des defekts
+  - groesse
+  - position
+
+  Auswahl
+  - Datum
+  - Zeit
+  - nach ID suchen
+  - sortieren
+*/

@@ -1,6 +1,6 @@
-#include <woodmodel.h>
+#include "woodmodel.h"
 #include <QDebug>
-#include <xmlaccess.h>
+#include "xmlaccess.h"
 
 WoodModel::WoodModel(QObject *parent)
     : QAbstractListModel(parent), QQuickImageProvider(QQmlImageProviderBase::Image), m_activeProfile(-1)
