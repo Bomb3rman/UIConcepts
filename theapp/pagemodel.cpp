@@ -8,7 +8,8 @@
 PageModel::PageModel(QQmlEngine *engine, QObject *rootObj) :
     QAbstractListModel()
 {
-    QString pluginDir = QCoreApplication::instance()->applicationDirPath() + "/../plugins";
+   //OLD:  QString pluginDir = QCoreApplication::instance()->applicationDirPath() + "/../plugins";
+    QString pluginDir = QCoreApplication::instance()->applicationDirPath() + "/../../plugins";
     QCoreApplication::instance()->addLibraryPath(pluginDir);
 
     QDir currentDir(pluginDir);
