@@ -5,9 +5,10 @@
 #include <QDomDocument>
 #include <QDomElement>
 
+//OLD QDir woodProfileDir("../assets/woodprofiles/");
+//OLD QDir historyDir("../assets/history/");
 QDir woodProfileDir("../assets/woodprofiles/");
 QDir historyDir("../assets/history/");
-
 
 bool XMLAccess::readProfilesXML(WoodModel *model)
 {

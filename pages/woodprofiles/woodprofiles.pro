@@ -6,23 +6,22 @@ QT += quick xml
 
 include(../plugins.pri)
 
-first.depends = $(first) copyassets
+first.depends = $(first) mkassets copyassets
 export(first.depends)
-#if(@$(CHK_DIR_EXISTS) \"$${OUT_PWD}/../../assets/\")
-#{
-copyassets.commands = $(MKDIR) \"$${OUT_PWD}\..\..\assets\" | $$QMAKE_COPY_DIR \"$${PWD}\woodprofiles\" \"$${OUT_PWD}\..\..\assets\"
-#$$QMAKE_COPY_DIR \"$${PWD}\ui\" \"$${OUT_PWD}\\$$DESTDIR/ui\"
 
-#} else {
-#copyassets.commands = $$QMAKE_COPY_DIR \"$${PWD}/woodprofiles/\" \"$${OUT_PWD}/../../assets\"
-#}
-
-#copyassets.commands = $(MKDIR) $$OUT_PWD/../../assets/ | $(COPY_DIR) $$PWD/woodprofiles/ $$OUT_PWD/../../assets/
+#copyassets.commands = $(MKDIR) \"$${OUT_PWD}\..\..\assets\" | $$QMAKE_COPY_DIR \"$${PWD}/woodprofiles\" \"$${OUT_PWD}/../../assets/\"
 
 
+!exists( $${OUT_PWD}/../../assets ){
+   mkassets.commands = $(MKDIR) \"$${OUT_PWD}/../../assets\"
+}
 
+#copyassets.commands = $(MKDIR) \"$${OUT_PWD}\..\..\assets\" | $$QMAKE_COPY_DIR \"$${PWD}\history\" \"$${OUT_PWD}\..\..\assets\\"
+copyassets.commands = $$QMAKE_COPY_DIR \"$${PWD}/woodprofiles\" \"$${OUT_PWD}/../../assets/woodprofiles\"
+
+export(mkassets.commands)
 export(copyassets.commands)
-QMAKE_EXTRA_TARGETS = first copyassets
+QMAKE_EXTRA_TARGETS = first mkassets copyassets
 
 SOURCES += \
     dummypage.cpp
