@@ -8,7 +8,7 @@ Datahandling::Datahandling()
 {
 }
 
-WoodModel *Datahandling::Datahandling::createProfilesModel()
+WoodModel *Datahandling::createProfilesModel()
 {
     profilesModel = new WoodModel();
     return profilesModel;
