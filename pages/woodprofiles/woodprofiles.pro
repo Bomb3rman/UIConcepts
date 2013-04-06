@@ -4,14 +4,14 @@ LIBS *= -L../../plugins -lpageplugin -ldatahandling
 
 QT += quick xml
 
-include(../plugins.pri)
+DEFINE *= USE_XML
 
-first.depends = $(first) mkassets copyassets
-export(first.depends)
+include(../plugins.pri)
 
 #copyassets.commands = $(MKDIR) \"$${OUT_PWD}\..\..\assets\" | $$QMAKE_COPY_DIR \"$${PWD}/woodprofiles\" \"$${OUT_PWD}/../../assets/\"
 
-
+first.depends = $(first) mkassets copyassets
+export(first.depends)
 !exists( $${OUT_PWD}/../../assets ){
    mkassets.commands = $(MKDIR) \"$${OUT_PWD}/../../assets\"
 }

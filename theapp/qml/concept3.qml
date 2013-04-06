@@ -4,8 +4,8 @@ import QtQuick.Controls.Styles 1.0
 
 AppWindow {
     id: theRoot
-    width: 1200
-    height: 900
+    width: 1300//1200
+    height: 700//900
     color: "#1b1c1e"
 
     FontLoader {

@@ -5,23 +5,25 @@
 #include <QDomDocument>
 #include <QDomElement>
 
-//OLD QDir woodProfileDir("../assets/woodprofiles/");
-//OLD QDir historyDir("../assets/history/");
 QDir woodProfileDir("../assets/woodprofiles/");
 QDir historyDir("../assets/history/");
+
 
 bool XMLAccess::readProfilesXML(WoodModel *model)
 {
     QFile xmlFile(woodProfileDir.absolutePath() + "/woodprofiles.xml");
-    qDebug() <<xmlFile.fileName();
+    qDebug() << xmlFile.fileName();
     xmlFile.open(QIODevice::ReadOnly);
     if (!xmlFile.isOpen()) {
         qWarning() << "Could not open XML wood profile file";
         return false;
     }
     QDomDocument doc;
+    qDebug() << "Parsing content" << doc.setContent(&xmlFile);
     QDomElement element = doc.documentElement();
-    for(QDomElement n = element.firstChildElement(); !n.isNull(); n = n.nextSiblingElement()) {
+
+    for(QDomElement n = element.firstChildElement(); !n.isNull(); n = n.nextSiblingElement())
+    {
         QImage img(woodProfileDir.absolutePath() + "/" + n.firstChildElement("img").text());
         if (img.isNull())
             qDebug() << "Image could not be loaded" << woodProfileDir.absolutePath() + "/" + n.firstChildElement("img").text();

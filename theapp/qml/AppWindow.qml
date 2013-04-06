@@ -79,7 +79,7 @@ Rectangle {
                 text: "Login"
                 onClicked: {
                     if (username.text === "admin" &&
-                            password.text === "bitch") {
+                            password.text === "password") {
                         loginscreen.visible = false;
                         loginscreen.state = "loggedIn"
                     } else {

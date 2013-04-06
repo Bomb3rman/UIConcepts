@@ -1,8 +1,8 @@
 import QtQuick 2.0
 
 Rectangle {
-    width: 8000
-    height: 500
+    width: 1920//8000
+    height: 1080//500
     FontLoader {
         id: myFont
         source: "fonts/Quicksand_Bold.otf"

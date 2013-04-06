@@ -22,7 +22,7 @@ QString HistoryPage::getExtendedInfo()
 
 void HistoryPage::setModel()
 {
-    qDebug() << "Setting wood model";
+    qDebug() << "Setting history model";
     m_engine->rootContext()->setContextProperty("historyModel", m_historyModel);
 }
 

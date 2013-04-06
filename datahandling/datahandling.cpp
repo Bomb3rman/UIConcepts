@@ -23,7 +23,7 @@ HistoryModel *Datahandling::createHistoryModel()
 //Login
 bool Datahandling::checkLogin(QString username, QString password)
 {
-    if (username == "admin" && password == "bitch")
+    if (username == "admin" && password == "password")
         return true;
 
     return false;
