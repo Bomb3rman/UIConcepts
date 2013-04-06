@@ -10,7 +10,7 @@ DESTDIR = ..\plugins\qml\MMKQmlStyle
 
 first.depends = $(first) copyqmldir copyqmldir2 copyqmldir3
 export(first.depends)
-copyqmldir.commands = $$QMAKE_COPY \"$${OUT_PWD}\qmldir\" \"$${OUT_PWD}\\$${DESTDIR}/\"
+copyqmldir.commands = $$QMAKE_COPY \"$${OUT_PWD}\qmldir\" \"$${OUT_PWD}\\$$DESTDIR/\"
 copyqmldir2.commands = $$QMAKE_COPY \"$${PWD}\*.qml\" \"$${OUT_PWD}\\$$DESTDIR/\"
 copyqmldir3.commands = $$QMAKE_COPY_DIR \"$${PWD}\ui\" \"$${OUT_PWD}\\$$DESTDIR/ui\"
 export(copyqmldir.commands)
