@@ -1,7 +1,8 @@
 QT = core
 TEMPLATE = subdirs
 
-CONFIG = ordered
+CONFIG += ordered
+CONFIG += dll
 
 SUBDIRS += pageplugin\
     dummypage \

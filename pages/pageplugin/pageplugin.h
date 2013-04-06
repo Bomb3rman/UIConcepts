@@ -7,7 +7,13 @@
 #include <QQuickItem>
 #include <QDebug>
 
-class PagePlugin : public QObject
+#if defined(PAGEPLUGIN_LIBRARY)
+#  define PagePlugin_DLL Q_DECL_EXPORT
+#else
+#  define PagePlugin_DLL Q_DECL_IMPORT
+#endif
+
+class PagePlugin_DLL PagePlugin : public QObject
 {
     Q_OBJECT
 public:

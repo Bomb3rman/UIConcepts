@@ -1,6 +1,6 @@
-#include <dummypage.h>
+#include "dummypage.h"
 #include <QQmlContext>
-#include <../../datahandling/datahandling.h>
+#include "../../datahandling/datahandling.h"
 
 HistoryPage::HistoryPage(QObject *parent) :
     PagePlugin(parent)

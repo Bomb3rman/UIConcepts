@@ -1,4 +1,4 @@
-#include <3dscene.h>
+#include "3dscene.h"
 
 Scene3DPage::Scene3DPage(QObject *parent) :
     PagePlugin(parent)

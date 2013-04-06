@@ -1,8 +1,8 @@
 #ifndef DUMMYPAGE_H
 #define DUMMYPAGE_H
 
-#include <../pageplugin/pageplugin.h>
-#include <../../datahandling/historymodel.h>
+#include "../pageplugin/pageplugin.h"
+#include "../../datahandling/historymodel.h"
 
 class HistoryPage : public PagePlugin
 {

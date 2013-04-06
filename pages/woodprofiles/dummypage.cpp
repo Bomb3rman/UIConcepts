@@ -1,5 +1,5 @@
 #include "dummypage.h"
-#include <../../datahandling/datahandling.h>
+#include "../../datahandling/datahandling.h"
 #include <QQmlContext>
 
 WoodProfilesPage::WoodProfilesPage(QObject *parent) :

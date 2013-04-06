@@ -4,7 +4,7 @@
 
 first.depends = $(first) copyassets
 export(first.depends)
-copyassets.commands = $(COPY_DIR) $$PWD/qml $$OUT_PWD/
+copyassets.commands = $$QMAKE_COPY_DIR \"$${PWD}\qml\" \"$${OUT_PWD}\qml\"
 export(copyassets.commands)
 QMAKE_EXTRA_TARGETS = first copyassets
 

@@ -1,6 +1,12 @@
+TARGET = pageplugin
 TEMPLATE = lib
 
+DEFINES += PAGEPLUGIN_LIBRARY
+
 include(../plugins.pri)
+
+
+#DESTDIR = ../plugins
 
 QT += qml quick
 

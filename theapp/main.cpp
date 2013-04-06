@@ -2,9 +2,10 @@
 #include <QQuickView>
 #include <QPluginLoader>
 #include <QDebug>
-#include <pagemodel.h>
 #include <QQmlContext>
 #include <QPalette>
+
+#include "pagemodel.h"
 
 int main(int argc, char *argv[])
 {
