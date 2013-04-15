@@ -30,3 +30,12 @@ OTHER_FILES += qml/*
 OTHER_FILES += \
     qml/MessageCenter.qml
 
+OTHER_FILES += \
+    qml/Documentation.qml
+
+HEADERS += \
+    documentation.h
+
+SOURCES += \
+    documentation.cpp
+

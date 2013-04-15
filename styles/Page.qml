@@ -38,6 +38,7 @@ BorderImage {
     }
 
     Button {
+        id: minimizeButton
         z:10
         width: 120
         anchors.right: parent.right
@@ -45,6 +46,17 @@ BorderImage {
         anchors.margins: 10
         text: "Minimize"
         onClicked: rootPage.state = "minimized"
+        style: MMKButton{}
+    }
+
+    Button {
+        z:10
+        width: 120
+        anchors.right: parent.right
+        anchors.top: minimizeButton.bottom
+        anchors.margins: 10
+        text: "Doku"
+        onClicked: pageDocumentation.visible = !pageDocumentation.visible
         style: MMKButton{}
     }
 }

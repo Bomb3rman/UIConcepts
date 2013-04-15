@@ -7,6 +7,7 @@
 #include <QPalette>
 #include "../datahandling/datahandling.h"
 #include "../datahandling/logging.h"
+#include "documentation.h"
 
 int main(int argc, char *argv[])
 {
@@ -30,6 +31,9 @@ int main(int argc, char *argv[])
 
     QAbstractItemModel *messageCenter = Datahandling::createMessageCenter();
     viewer.rootContext()->setContextProperty("messageCenter", messageCenter);
+
+    Documentation documentation;
+    viewer.rootContext()->setContextProperty("pageDocumentation", &documentation);
     viewer.setSource(QUrl("qml/concept3.qml"));
     viewer.setFormat(format);
     viewer.installEventFilter(&logging);
