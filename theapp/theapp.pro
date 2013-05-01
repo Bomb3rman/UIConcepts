@@ -27,3 +27,6 @@ HEADERS += \
 
 OTHER_FILES += qml/*
 
+OTHER_FILES += \
+    qml/MessageCenter.qml
+

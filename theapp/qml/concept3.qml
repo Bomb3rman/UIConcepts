@@ -40,7 +40,7 @@ AppWindow {
     Rectangle {
         id: tools
         color: "#27282a"
-        width: 300
+        width: 250
         anchors.right: parent.right
         anchors.top: parent.top
         anchors.bottom: parent.bottom
@@ -54,6 +54,15 @@ AppWindow {
             }
             Tab {
                 title: "Notifications"
+                Item {
+                    width: parent.width
+                    height: parent.height
+
+                    MessageCenter {
+                        anchors.fill: parent
+                        Component.onCompleted: print(width + " " + height)
+                    }
+                }
             }
         }
 

@@ -41,7 +41,6 @@ MMKPage {
                     NumberAnimation {duration: 200; easing.type: Easing.InOutSine}
                 }
                 property string name: model.name
-                property var image: model.image
                 MouseArea {
                     id: mArea2
                     anchors.fill: parent
@@ -51,16 +50,6 @@ MMKPage {
                     }
                 }
 
-                Image {
-                    id: img
-                    width: 100
-                    height: 100
-                    anchors.top: parent.top
-                    anchors.topMargin: 10
-                    anchors.left: parent.left
-                    anchors.leftMargin: 5
-                    source: "image://woodprofiles/"+index
-                }
                 Text {
                     anchors.bottom: parent.bottom
                     anchors.left: parent.left
@@ -170,30 +159,6 @@ MMKPage {
                 Layout.row: 0
                 Layout.column: 1
             }
-            Text {
-                color: "white"
-                text: "Image:"
-                font.pixelSize: 15
-                font.bold: true
-                Layout.row: 1
-                Layout.column: 0
-            }
-            TextField {
-                text: ""//rootPage.marked >= 0 ? woodProfiles.itemAt(rootPage.marked).image : ""
-                style: MMKTextField{}
-                Layout.row: 1
-                Layout.column: 1
-            }
-        }
-
-        Image {
-            id: profileImage
-            anchors.top: parent.top
-            anchors.right: parent.right
-            anchors.margins: 20
-            source: rootPage.marked >= 0 ? "image://woodprofiles/"+rootPage.marked : ""// woodProfiles.itemAt(rootPage.marked).image : ""
-            height: 150
-            width: 150
         }
 
         Button {
@@ -205,7 +170,7 @@ MMKPage {
             text: "save"
             style: MMKButton{}
             onClicked: {
-                woodModel.saveProfile(rootPage.marked, profileName.text, profileImage.source);
+                woodModel.saveProfile(rootPage.marked, profileName.text);
                 rootPage.marked = -1
             }
         }

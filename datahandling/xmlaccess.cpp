@@ -23,10 +23,7 @@ bool XMLAccess::readProfilesXML(WoodModel *model)
     QDomElement element = doc.documentElement();
     qDebug() << element.firstChildElement("profile").isNull();
     for(QDomElement n = element.firstChildElement(); !n.isNull(); n = n.nextSiblingElement()) {
-        QImage img(woodProfileDir.absolutePath() + "/" + n.firstChildElement("img").text());
-        if (img.isNull())
-            qDebug() << "Image could not be loaded" << woodProfileDir.absolutePath() + "/" + n.firstChildElement("img").text();
-        Wood newWoodElement(n.firstChildElement("name").text(), img);
+         Wood newWoodElement(n.firstChildElement("name").text());
         model->addProfile(newWoodElement);
     }
     return true;
@@ -50,12 +47,6 @@ bool XMLAccess::saveProfilesXML(WoodModel *model)
         QDomText text = doc.createTextNode(model->data(model->index(i), WoodModel::NameRole).toString());
         attribute.appendChild(text);
         newProfile.appendChild(attribute);
-
-        QImage img = model->data(model->index(i), WoodModel::ImageRole).value<QImage>();
-        QString imgFilename = woodProfileDir.absolutePath() + "/" + QString::number(i) + ".jpg";
-        if (!img.save(imgFilename)) {
-            qWarning() << "Could not save image file" << imgFilename;
-        }
 
         attribute = doc.createElement("img");
         text = doc.createTextNode(QString::number(i) + ".jpg");

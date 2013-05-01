@@ -31,3 +31,9 @@ HEADERS += \
 
 SOURCES += \
     historymodel.cpp
+
+HEADERS += \
+    messagecenter.h
+
+SOURCES += \
+    messagecenter.cpp

@@ -1,7 +1,8 @@
 import QtQuick 2.0
-import MMKQmlStyle 1.0
+import QtQuick.Controls 1.0
+import QtQuick.Controls.Styles 1.0
 
-Rectangle {
+AppWindow {
     id: theRoot
     width: 1200
     height: 700
@@ -58,21 +59,18 @@ Rectangle {
                 height: 30
                 width: 100
                 Label{anchors.verticalCenter: parent.verticalCenter; id: l1; text: "The text"}
-                Textfield {anchors.left: l1.right; anchors.margins: 5}
+                TextField {anchors.left: l1.right; anchors.margins: 5; style: textFieldStyle}
             }
             Label { text: "test" }
-            Switch {label: "Option 1"}
-            Switch {label: "Option 2"}
+            CheckBox {text: "Option 1"; style: radioBStyle}
+            CheckBox {text: "Option 2"; style: radioBStyle}
         }
         Column {
             anchors.top: parent.top
             anchors.left: column1.right
             anchors.margins: 10
             spacing: 10
-            Switch {label: "Option 3"}
-            Switch {label: "Option 4"}
-            Switch {label: "Option 5"}
-            Button{}
+            Button{ text:"Button"; style: buttonStyle}
         }
     }
 }

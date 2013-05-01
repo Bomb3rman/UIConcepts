@@ -32,7 +32,17 @@ Rectangle {
         height: parent.height
         color: "black"
         z: 2
+        Image {
+            anchors.right: loginform.left
+            anchors.top: loginform.top
+            anchors.rightMargin: 20
+            source: "pics/key.png"
+            height: 128
+            width: 128
+        }
+
         Column {
+            id: loginform
             anchors.centerIn: parent
             Label {
                 color: "white"

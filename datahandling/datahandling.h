@@ -8,6 +8,8 @@
 #include <QSortFilterProxyModel>
 #include <QQmlContext>
 
+class MessageCenter;
+
 class DATAHANDLINGSHARED_EXPORT Datahandling : public QObject
 {
     Q_OBJECT
@@ -18,7 +20,10 @@ public:
 
     //Wood profiles
     static WoodModel *createProfilesModel();
+
     static QAbstractItemModel *createHistoryModel();
+
+    static QAbstractItemModel *createMessageCenter();
 
     //Login
     bool checkLogin(QString username, QString password); //TODO save mode
@@ -32,6 +37,7 @@ Q_SIGNALS:
 private:
     static WoodModel *profilesModel;
     static HistoryModel *historyModel;
+    static MessageCenter *messageCenter;
     static QSortFilterProxyModel *proxyModel;
     static bool m_safeModeEnabled;
     static QQmlContext *m_context;

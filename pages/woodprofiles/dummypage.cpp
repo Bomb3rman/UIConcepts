@@ -29,6 +29,5 @@ void WoodProfilesPage::setModel()
 {
     qDebug() << "Setting wood model";
     m_engine->rootContext()->setContextProperty("woodModel", woodModel);
-    m_engine->addImageProvider("woodprofiles", woodModel);
 }
 

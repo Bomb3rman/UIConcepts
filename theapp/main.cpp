@@ -22,6 +22,8 @@ int main(int argc, char *argv[])
     viewer.rootContext()->setContextProperty("datahandling", new Datahandling());
     PageModel pageLoader(viewer.engine(), viewer.rootObject());
     viewer.rootContext()->setContextProperty("pageModel", &pageLoader);
+    QAbstractItemModel *messageCenter = Datahandling::createMessageCenter();
+    viewer.rootContext()->setContextProperty("messageCenter", messageCenter);
     viewer.setSource(QUrl("qml/concept3.qml"));
     viewer.setFormat(format);
     viewer.show();

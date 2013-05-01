@@ -1,5 +1,4 @@
 import QtQuick 2.0
-import MMKQmlStyle 1.0
 import QtQuick.Controls 1.0
 import QtQuick.Controls.Styles 1.0
 
@@ -33,22 +32,21 @@ Rectangle {
         ListElement {name: "Page4"}
     }
 
-
-    Page {
-        anchors.top: header.bottom
-        anchors.topMargin: 20
-        anchors.left: parent.left
-        anchors.leftMargin: 30
-        anchors.bottom: parent.bottom
-        anchors.right: parent.right
-    }
-
     Toolbar3 {
         id: tBar
-        model: theModel
+        model: pageModel
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
+        anchors.margins: 20
+    }
+
+    Rectangle {
+        id: theContent
+        anchors.bottom: tBar.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: header.bottom
         anchors.margins: 20
     }
 

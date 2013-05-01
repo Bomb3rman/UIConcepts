@@ -3,6 +3,7 @@
 #include <QFile>
 #include <QDir>
 #include <QDebug>
+#include "messagecenter.h"
 
 Datahandling::Datahandling()
 {
@@ -26,6 +27,13 @@ QAbstractItemModel *Datahandling::createHistoryModel()
     return proxyModel;
 }
 
+QAbstractItemModel *Datahandling::createMessageCenter()
+{
+    messageCenter = new MessageCenter();
+
+    return messageCenter;
+}
+
 //Login
 bool Datahandling::checkLogin(QString username, QString password)
 {
@@ -43,6 +51,7 @@ void Datahandling::setSafeModeEnabled(bool state)
 
 WoodModel *Datahandling::profilesModel = 0;
 HistoryModel *Datahandling::historyModel = 0;
+MessageCenter *Datahandling::messageCenter = 0;
 QSortFilterProxyModel *Datahandling::proxyModel = 0;
 bool Datahandling::m_safeModeEnabled = false;
 QQmlContext *Datahandling::m_context = 0;

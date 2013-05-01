@@ -32,7 +32,8 @@ BorderImage {
             Text {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
-                text: model.name
+                text: model.BasicInfo
+                font.pixelSize: 10
             }
             MouseArea {
                 id: mouse
@@ -40,6 +41,13 @@ BorderImage {
                 anchors.fill: parent
                 onEntered: highlite.visible = true
                 onExited: highlite.visible = false
+                onClicked: {
+                    model.Page.state = "maximized"
+                    model.Page.parent = theContent
+                    model.Page.anchors.centerIn = theContent
+                    model.Page.width = theContent.width
+                    model.Page.height = theContent.height
+                }
             }
 
             Rectangle {
