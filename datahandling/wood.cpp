@@ -1,4 +1,5 @@
 #include "wood.h"
+#include <QDebug>
 
 
 Defect::Defect(const QString &name, const qreal &threshold, const DType type, const QString &description, QObject *parent)
@@ -9,6 +10,7 @@ Defect::Defect(const QString &name, const qreal &threshold, const DType type, co
 
 QString Defect::name() const
 {
+    qDebug() << "returning name" << m_name;
     return m_name;
 }
 
@@ -50,8 +52,8 @@ void Defect::setDescription(const QString &description)
     Q_EMIT descriptionChanged();
 }
 
-Wood::Wood(const QString &name)
-    : m_name(name)
+Wood::Wood(const QString &name, const QList<QObject*> defects)
+    : m_name(name), m_defects(defects)
 {
 }
 

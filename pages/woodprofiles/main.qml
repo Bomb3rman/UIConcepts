@@ -41,6 +41,7 @@ MMKPage {
                     NumberAnimation {duration: 200; easing.type: Easing.InOutSine}
                 }
                 property string name: model.name
+                property var defects: model.defects
                 MouseArea {
                     id: mArea2
                     anchors.fill: parent
@@ -139,27 +140,54 @@ MMKPage {
             text: rootPage.marked !== -2 ? "Edit wood profile" : "New wood profile"
         }
 
-        GridLayout {
+        //        GridLayout {
+        //            anchors.top: editTitle.bottom
+        //            anchors.left: parent.left
+        //            anchors.topMargin: 20
+        //            anchors.leftMargin: 10
+        Text {
+            id: nameLable
             anchors.top: editTitle.bottom
             anchors.left: parent.left
             anchors.topMargin: 20
             anchors.leftMargin: 10
-            Text {
-                color: "white"
-                text: "Name:"
+            color: "white"
+            text: "Name:"
+            font.pixelSize: 15
+            font.bold: true
+            Layout.row: 0
+            Layout.column: 0
+        }
+        TextField {
+            anchors.top: nameLable.top
+            anchors.left: nameLable.right
+            anchors.leftMargin: 50
+            anchors.topMargin: -5
+            id: profileName
+            text: rootPage.marked >= 0 ? woodProfiles.itemAt(rootPage.marked).name : ""
+            style: MMKTextField{}
+            Layout.row: 0
+            Layout.column: 1
+        }
+        ListView {
+            anchors.top: nameLable.bottom
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.bottom: saveButton.top
+            anchors.leftMargin: 10
+            anchors.topMargin: 15
+            anchors.bottomMargin: 20
+            clip: true
+            model: rootPage.marked >= 0 ? woodProfiles.itemAt(rootPage.marked).defects : 0
+            delegate: Text {
+                text: model.modelData.name
                 font.pixelSize: 15
                 font.bold: true
-                Layout.row: 0
-                Layout.column: 0
+                color: "white"
             }
-            TextField {
-                id: profileName
-                text: rootPage.marked >= 0 ? woodProfiles.itemAt(rootPage.marked).name : ""
-                style: MMKTextField{}
-                Layout.row: 0
-                Layout.column: 1
-            }
+            onModelChanged: print ("model changed" + model)
         }
+        //        }
 
         Button {
             id: saveButton

@@ -5,7 +5,7 @@
 #include <QImage>
 #include <QUrl>
 
-class Defect : QObject{
+class Defect : public QObject {
     Q_OBJECT
 
     Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
@@ -50,7 +50,7 @@ private:
 class Q_DECL_EXPORT Wood
 {
 public:
-    Wood(const QString &name);
+    Wood(const QString &name, const QList<QObject*> defects = QList<QObject*> ());
 
     QString name() const;
     QList<QObject *> defects() const;

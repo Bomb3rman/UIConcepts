@@ -12,17 +12,6 @@ WoodModel::WoodModel(QObject *parent)
 #endif
 }
 
-//QImage WoodModel::requestImage(const QString & id, QSize * size, const QSize & requestedSize)
-//{
-//    Q_UNUSED(size)
-//    Q_UNUSED(requestedSize)
-//    int row = id.toInt();
-//    if (row < 0 && row >= rowCount())
-//        return QImage();
-
-//    return m_wood[row].image();
-//}
-
 void WoodModel::addProfile(const Wood &wood)
 {
     beginInsertRows(QModelIndex(), rowCount(), rowCount());
@@ -43,22 +32,23 @@ QVariant WoodModel::data(const QModelIndex & index, int role) const {
     const Wood &wood = m_wood[index.row()];
     if (role == NameRole)
         return wood.name();
-//    else if (role == ImageRole)
-//        return wood.image();
+    else if (role == DefectsRole) {
+        qDebug() << "Returning defects" << wood.defects().count();
+        return QVariant::fromValue(wood.defects());
+    }
     return QVariant();
 }
 
-bool WoodModel::saveProfile(int id, QString name)
+bool WoodModel::saveProfile(int id, QString name, QList<QObject*> defects)
 {
-    //QImage image = requestImage(imagesrc.split("/").last(), 0, QSize());
     if (id == -2) {
-        addProfile(Wood(name));
+        addProfile(Wood(name, defects));
         return true;
     }
     if (id < 0 || id >= rowCount())
         return false;
 
-    m_wood[id] = Wood(name);
+    m_wood[id] = Wood(name, defects);
     Q_EMIT dataChanged(index(id), index(id));
 
 #if defined(USE_XML)
@@ -81,7 +71,7 @@ void WoodModel::setActiveProfile(int id)
 QHash<int, QByteArray> WoodModel::roleNames() const {
     QHash<int, QByteArray> roles;
     roles[NameRole] = "name";
-    //roles[ImageRole] = "image";
+    roles[DefectsRole] = "defects";
     return roles;
 }
 

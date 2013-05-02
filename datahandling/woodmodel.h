@@ -12,7 +12,8 @@ class WoodModel : public QAbstractListModel
     Q_PROPERTY(int activeProfile READ activeProfile WRITE setActiveProfile NOTIFY activeProfileChanged)
 public:
     enum WoodRoles {
-        NameRole = Qt::UserRole + 1
+        NameRole = Qt::UserRole + 1,
+        DefectsRole
     };
 
     WoodModel(QObject *parent = 0);
@@ -23,7 +24,7 @@ public:
 
     QVariant data(const QModelIndex & index, int role = Qt::DisplayRole) const;
 
-    Q_INVOKABLE bool saveProfile(int id, QString name);
+    Q_INVOKABLE bool saveProfile(int id, QString name, QList<QObject*> defects);
 
     int activeProfile();
 

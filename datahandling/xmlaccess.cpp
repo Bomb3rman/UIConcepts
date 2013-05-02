@@ -23,7 +23,8 @@ bool XMLAccess::readProfilesXML(WoodModel *model)
     QDomElement element = doc.documentElement();
     qDebug() << element.firstChildElement("profile").isNull();
     for(QDomElement n = element.firstChildElement(); !n.isNull(); n = n.nextSiblingElement()) {
-         Wood newWoodElement(n.firstChildElement("name").text());
+        Wood newWoodElement(n.firstChildElement("name").text());
+        newWoodElement.appendDefect(new Defect("defect1", 1.0, Defect::LessThan, "A description"));
         model->addProfile(newWoodElement);
     }
     return true;
