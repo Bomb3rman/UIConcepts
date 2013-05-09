@@ -7,33 +7,22 @@ DESTDIR = ../plugins
 
 DEFINES += DATAHANDLING_LIBRARY USE_XML
 
-SOURCES += datahandling.cpp
-
-HEADERS += datahandling.h\
-        datahandling_global.h
-
 HEADERS += \
     wood.h \
-    woodmodel.h
+    woodmodel.h \
+    logging.h \
+    xmlaccess.h \
+    historymodel.h \
+    messagecenter.h \
+    datahandling.h\
+    datahandling_global.h
 
 SOURCES += \
     wood.cpp \
-    woodmodel.cpp
+    woodmodel.cpp \
+    messagecenter.cpp \
+    xmlaccess.cpp \
+    historymodel.cpp \
+    logging.cpp \
+    datahandling.cpp
 
-HEADERS += \
-    xmlaccess.h
-
-SOURCES += \
-    xmlaccess.cpp
-
-HEADERS += \
-    historymodel.h
-
-SOURCES += \
-    historymodel.cpp
-
-HEADERS += \
-    messagecenter.h
-
-SOURCES += \
-    messagecenter.cpp

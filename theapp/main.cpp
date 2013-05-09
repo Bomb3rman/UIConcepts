@@ -6,10 +6,15 @@
 #include <QQmlContext>
 #include <QPalette>
 #include "../datahandling/datahandling.h"
+#include "../datahandling/logging.h"
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+    Logging logging;
+    logging.logButtonClicked("MyButton");
+    logging.logMessageReceived("MyMessage");
+    logging.logPageOpened("MyPage");
     QPalette newSystemPalette;
     newSystemPalette.setColor(QPalette::Active, QPalette::Text, QColor(Qt::white));
     newSystemPalette.setColor(QPalette::Inactive, QPalette::Text, QColor(Qt::gray));
@@ -26,7 +31,9 @@ int main(int argc, char *argv[])
     viewer.rootContext()->setContextProperty("messageCenter", messageCenter);
     viewer.setSource(QUrl("qml/concept3.qml"));
     viewer.setFormat(format);
+    viewer.installEventFilter(&logging);
     viewer.show();
+    QObject::connect(viewer.rootObject(), SIGNAL(sendMsg(QString)), &logging, SLOT(sendMessage(QString)));
 
     return app.exec();
 }
