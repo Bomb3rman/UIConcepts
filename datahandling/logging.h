@@ -4,7 +4,6 @@
 #include <QFile>
 #include <QEvent>
 #include <QPointF>
-#include <QUdpSocket>
 #include "datahandling_global.h"
 
 class DATAHANDLINGSHARED_EXPORT Logging : public QObject
@@ -24,21 +23,13 @@ public:
     void logMessageReceived(QString message);
     void logMouseClicked(QPointF pos);
 
-public Q_SLOTS:
-    void sendMessage(QString message);
-
 protected:
     bool eventFilter(QObject *obj, QEvent *event);
 
-private Q_SLOTS:
-    void readUdpSocket();
-
 private:
-    void openUdpSocket();
     void log(QString logline);
     QFile logfile;
     LogLevel m_loglevel;
-    QUdpSocket *udpSocket;
 };
 
 #endif // LOGGING_H

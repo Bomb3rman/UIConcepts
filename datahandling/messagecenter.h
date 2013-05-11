@@ -3,7 +3,7 @@
 
 #include <QObject>
 #include <QAbstractListModel>
-
+#include <QUdpSocket>
 
 class Q_DECL_EXPORT MessageElement
 {
@@ -25,6 +25,7 @@ class MessageCenter : public QAbstractListModel
     Q_OBJECT
 public:
     explicit MessageCenter(QObject *parent = 0);
+    ~MessageCenter();
 
     enum MessageRoles {
         TitleRole = Qt::UserRole + 1,
@@ -38,11 +39,20 @@ public:
 
     void addMessage(const MessageElement &element);
 
+
+public Q_SLOTS:
+    void sendMessage(QString message);
+
 protected:
     QHash<int, QByteArray> roleNames() const;
+
+private Q_SLOTS:
+    void readUdpSocket();
+
 private:
+    void openUdpSocket();
     QList<MessageElement> m_message;
-    
+    QUdpSocket *udpSocket;
 };
 
 #endif // MESSAGECENTER_H

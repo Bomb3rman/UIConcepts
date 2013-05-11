@@ -33,13 +33,10 @@ Logging::Logging(LogLevel loglevel) :
     logfile.open(QIODevice::WriteOnly|QIODevice::Unbuffered); //Has to be unbuffered,
                                             //otherwise the content will not be written immediately
     logfile.write("Begin Logfile\n");
-
-    openUdpSocket();
 }
 
 Logging::~Logging()
 {
-    delete udpSocket;
 }
 
 void Logging::logButtonClicked(QString buttonName)
@@ -66,11 +63,6 @@ void Logging::logMouseClicked(QPointF pos)
         log("Mouse clicked: " + QString::number(pos.x()) + " " + QString::number(pos.y()));
 }
 
-void Logging::sendMessage(QString message)
-{
-    udpSocket->writeDatagram(message.toUtf8(), QHostAddress::LocalHost, 7755);
-}
-
 bool Logging::eventFilter(QObject *obj, QEvent *event)
 {
     Q_UNUSED(obj);
@@ -79,33 +71,6 @@ bool Logging::eventFilter(QObject *obj, QEvent *event)
         logMouseClicked(((QMouseEvent*)event)->pos());
     }
     return false;
-}
-
-void Logging::readUdpSocket()
-{
-    QByteArray socketData;
-    while (udpSocket->hasPendingDatagrams()) {
-        QByteArray datagram;
-        datagram.resize(udpSocket->pendingDatagramSize());
-        QHostAddress sender;
-        quint16 senderPort;
-
-        udpSocket->readDatagram(datagram.data(), datagram.size(),
-                                &sender, &senderPort);
-
-        socketData += datagram;
-    }
-
-    qDebug() << "----Got socket data" << socketData;
-}
-
-void Logging::openUdpSocket()
-{
-    udpSocket = new QUdpSocket(this);
-    udpSocket->bind(QHostAddress::LocalHost, 7755);
-
-    connect(udpSocket, SIGNAL(readyRead()),
-            this, SLOT(readUdpSocket()));
 }
 
 void Logging::log(QString logLine)

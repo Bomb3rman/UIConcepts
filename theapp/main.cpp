@@ -27,13 +27,14 @@ int main(int argc, char *argv[])
     viewer.rootContext()->setContextProperty("datahandling", new Datahandling());
     PageModel pageLoader(viewer.engine(), viewer.rootObject());
     viewer.rootContext()->setContextProperty("pageModel", &pageLoader);
+
     QAbstractItemModel *messageCenter = Datahandling::createMessageCenter();
     viewer.rootContext()->setContextProperty("messageCenter", messageCenter);
     viewer.setSource(QUrl("qml/concept3.qml"));
     viewer.setFormat(format);
     viewer.installEventFilter(&logging);
     viewer.show();
-    QObject::connect(viewer.rootObject(), SIGNAL(sendMsg(QString)), &logging, SLOT(sendMessage(QString)));
+    //QObject::connect(viewer.rootObject(), SIGNAL(sendMsg(QString)), &logging, SLOT(sendMessage(QString)));
 
     return app.exec();
 }

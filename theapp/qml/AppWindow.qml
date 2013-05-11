@@ -15,8 +15,6 @@ Rectangle {
     property Component radioStyle: MMKRadioButton{}
     //property Component gboxStyle: MMKGroupBox{}
 
-    signal sendMsg(string message);
-
     Text {
         z: 1
         text: "Safemode"
@@ -128,7 +126,7 @@ Rectangle {
                         datahandling.safeMode = true
                         print(datahandling.safeMode)
                         loginscreen.state = "loggedIn"
-                        rootApp.sendMsg("Hu, this is a message");
+                        messageCenter.sendMessage("Hu, this is a message");
                     }
                 }
             }
