@@ -66,3 +66,6 @@ OTHER_FILES += \
 
 OTHER_FILES += \
     MMKGroupBox.qml
+
+OTHER_FILES += \
+    Popup.qml

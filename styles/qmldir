@@ -8,6 +8,7 @@ MMKLabel 1.0 MMKLabel.qml
 MMKCheckBox 1.0 RadioButton.qml
 MMKPage 1.0 Page.qml
 Box 1.0 Box.qml
+MMKPopup 1.0 Popup.qml
 MMKSlider 1.0 MMKSlider.qml
 MMKTabView 1.0 MMKTabView.qml
 MMKComboBox 1.0 MMKComboBox.qml

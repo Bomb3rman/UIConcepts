@@ -39,3 +39,6 @@ HEADERS += \
 SOURCES += \
     documentation.cpp
 
+OTHER_FILES += \
+    qml/SendMessagePopup.qml
+

@@ -56,6 +56,7 @@ Rectangle {
                 id: username
                 style: textFieldStyle
                 width: 230
+                text: "admin"
             }
             Item {
                 height: 20
@@ -72,6 +73,7 @@ Rectangle {
                 style: textFieldStyle
                 echoMode: TextInput.Password
                 width: 230
+                text: "bitch"
             }
             Item {
                 height: 10

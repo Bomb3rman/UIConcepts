@@ -66,27 +66,27 @@ AppWindow {
 
                         MessageCenter {
                             anchors.fill: parent
-                            Component.onCompleted: print(width + " " + height)
+                            anchors.bottomMargin: !datahandling.safeMode ? sendMessageButton.height : 0
+                        }
+
+                        Button {
+                            id: sendMessageButton
+                            anchors.bottom: parent.bottom
+                            anchors.right: parent.right
+                            anchors.margins: 5
+                            width: 160
+                            style: buttonStyle
+                            text: "Send Message"
+                            visible: !datahandling.safeMode
+                            onClicked: {
+                                var popupComponent = Qt.createComponent("SendMessagePopup.qml")
+                                popupComponent.createObject(rootApp);
+                                print("Send message button clicked");
+                            }
                         }
                     }
                 }
             }
-
-            //        Rectangle {
-            //            id: service
-            //            anchors.left: parent.left
-            //            anchors.right: parent.right
-            //            anchors.top: parent.top
-            //            anchors.margins: 10
-            //            height: 200
-            //            border.color: "black"
-            //            border.width: 2
-            //            Image {
-            //                source: "pics/service.png"
-            //                anchors.fill: parent
-            //                anchors.margins: 2
-            //            }
-            //        }
 
             Label {
                 id: title
