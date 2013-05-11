@@ -15,6 +15,8 @@ Rectangle {
     property Component radioStyle: MMKRadioButton{}
     //property Component gboxStyle: MMKGroupBox{}
 
+    property var activePage;
+
     Text {
         z: 1
         text: "Safemode"

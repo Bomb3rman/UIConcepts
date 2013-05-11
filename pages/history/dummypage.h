@@ -13,6 +13,7 @@ public:
 
     QString getBasicInfo();
     QString getExtendedInfo();
+    QString getDocumentation();
 
 public Q_SLOTS:
     void setModel();

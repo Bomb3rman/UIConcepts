@@ -114,7 +114,7 @@ AppWindow {
         width: 20
         height: 20
         radius: 10
-        x: 800//documentation.x
+        x: 800
         y: 10
         visible: documentation.visible
         color: "blue"

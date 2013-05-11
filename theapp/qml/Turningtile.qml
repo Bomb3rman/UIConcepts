@@ -43,6 +43,8 @@ Item {
                 model.Page.width = mainFrame.width
                 model.Page.height = mainFrame.height
                 model.Page.visible = true;
+                pageDocumentation.text = model.Documentation
+                activePage = Page;
             }
         }
     }

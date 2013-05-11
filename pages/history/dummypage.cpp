@@ -20,6 +20,11 @@ QString HistoryPage::getExtendedInfo()
     return "ExtendedInfo\nMore Info\nnoch mehr";
 }
 
+QString HistoryPage::getDocumentation()
+{
+    return "Documentation for HistoryPage";
+}
+
 void HistoryPage::setModel()
 {
     qDebug() << "Setting wood model";

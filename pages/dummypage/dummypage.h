@@ -12,6 +12,7 @@ public:
 
     QString getBasicInfo();
     QString getExtendedInfo();
+    QString getDocumentation();
 };
 
 #endif // DUMMYPAGE_H
