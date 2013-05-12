@@ -11,6 +11,7 @@ class Defect : public QObject {
     Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
     Q_PROPERTY(DType type READ type WRITE setType NOTIFY typeChanged)
     Q_PROPERTY(qreal threshold READ threshold WRITE setThreshold NOTIFY thresholdChanged)
+    Q_PROPERTY(qreal per READ per WRITE setPer NOTIFY perChanged)
     Q_PROPERTY(QString description READ description WRITE setDescription NOTIFY descriptionChanged)
 
 public:
@@ -20,7 +21,8 @@ public:
         LongerThan
     };
 
-    Defect(const QString &name, const qreal &threshold, const DType type, const QString &description = "", QObject *parent=0);
+    Defect(const QString &name, const qreal &threshold, const DType type, const QString &description = "",
+           qreal per = 1000, QObject *parent=0);
 
     QString name() const;
     void setName(const QString &name);
@@ -34,17 +36,22 @@ public:
     QString description() const;
     void setDescription(const QString &description);
 
+    qreal per() const;
+    void setPer(const qreal &per);
+
 signals:
     void nameChanged();
     void typeChanged();
     void thresholdChanged();
     void descriptionChanged();
+    void perChanged();
 
 private:
     QString m_name;
     qreal m_threshold;
     DType m_type;
     QString m_description;
+    qreal m_per;
 };
 
 class Q_DECL_EXPORT Wood

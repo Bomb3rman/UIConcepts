@@ -131,21 +131,6 @@ MMKPage {
         }
 
         Text {
-            id: editTitle
-            anchors.top: parent.top
-            anchors.left: parent.left
-            anchors.margins: 5
-            font.bold: true
-            color: "white"
-            text: rootPage.marked !== -2 ? "Edit wood profile" : "New wood profile"
-        }
-
-        //        GridLayout {
-        //            anchors.top: editTitle.bottom
-        //            anchors.left: parent.left
-        //            anchors.topMargin: 20
-        //            anchors.leftMargin: 10
-        Text {
             id: nameLable
             anchors.top: editTitle.bottom
             anchors.left: parent.left
@@ -155,39 +140,131 @@ MMKPage {
             text: "Name:"
             font.pixelSize: 15
             font.bold: true
-            Layout.row: 0
-            Layout.column: 0
         }
         TextField {
+            id: profileName
             anchors.top: nameLable.top
             anchors.left: nameLable.right
             anchors.leftMargin: 50
             anchors.topMargin: -5
-            id: profileName
             text: rootPage.marked >= 0 ? woodProfiles.itemAt(rootPage.marked).name : ""
             style: MMKTextField{}
-            Layout.row: 0
-            Layout.column: 1
         }
+        Text {
+            id: editTitle
+            anchors.top: parent.top
+            anchors.left: parent.left
+            anchors.margins: 5
+            font.bold: true
+            color: "white"
+            text: rootPage.marked !== -2 ? "Edit wood profile" : "New wood profile"
+        }
+
         ListView {
             anchors.top: nameLable.bottom
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.bottom: saveButton.top
             anchors.leftMargin: 10
-            anchors.topMargin: 15
+            anchors.topMargin: 40
             anchors.bottomMargin: 20
             clip: true
             model: rootPage.marked >= 0 ? woodProfiles.itemAt(rootPage.marked).defects : 0
-            delegate: Text {
-                text: model.modelData.name
-                font.pixelSize: 15
-                font.bold: true
-                color: "white"
+            header:         Item {
+                id: defectsHeader
+                height: 20
+                Text {
+                    id: headerName
+                    width: 120
+                    text: "Defect"
+                    font.pixelSize: 15
+                    font.bold: true
+                    color: "white"
+                }
+                Text {
+                    id: headerThreshold
+                    width: 70
+                    anchors.left: headerName.right
+                    anchors.leftMargin: 7
+                    text: "Threshold"
+                    font.pixelSize: 15
+                    font.bold: true
+                    color: "white"
+                }
+                Text {
+                    id: headerPer
+                    width: 60
+                    anchors.left: headerThreshold.right
+                    anchors.leftMargin: 7
+                    text: "Per"
+                    font.pixelSize: 15
+                    font.bold: true
+                    color: "white"
+                }
+                Text {
+                    id: headerType
+                    width: 50
+                    anchors.left: headerPer.right
+                    anchors.leftMargin: 7
+                    text: "Type"
+                    font.pixelSize: 15
+                    font.bold: true
+                    color: "white"
+                }
+                Text {
+                    id: headerDescription
+                    width: 180
+                    anchors.left: headerType.right
+                    anchors.leftMargin: 7
+                    text: "Description"
+                    font.pixelSize: 15
+                    font.bold: true
+                    color: "white"
+                }
+            }
+            delegate: Item {
+                height: defectName.height
+                TextField {
+                    width: 120
+                    id: defectName
+                    text: model.modelData.name
+                    style: MMKTextField{}
+                }
+                TextField {
+                    id: defectThreshold
+                    width: 70
+                    anchors.left: defectName.right
+                    anchors.leftMargin: 7
+                    text: model.modelData.threshold
+                    style: MMKTextField{}
+                }
+                TextField {
+                    id: defectPer
+                    width: 60
+                    anchors.left: defectThreshold.right
+                    anchors.leftMargin: 7
+                    text: model.modelData.per
+                    style: MMKTextField{}
+                }
+                TextField {
+                    id: defectType
+                    width: 50
+                    anchors.left: defectPer.right
+                    anchors.leftMargin: 7
+                    text: model.modelData.type
+                    style: MMKTextField{}
+                }
+                TextField {
+                    id: defectDescription
+                    width: 180
+                    anchors.left: defectType.right
+                    anchors.leftMargin: 7
+                    text: model.modelData.description
+                    style: MMKTextField{}
+                }
             }
             onModelChanged: print ("model changed" + model)
         }
-        //        }
 
         Button {
             id: saveButton

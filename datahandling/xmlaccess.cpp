@@ -21,10 +21,21 @@ bool XMLAccess::readProfilesXML(WoodModel *model)
     QDomDocument doc;
     doc.setContent(&xmlFile);
     QDomElement element = doc.documentElement();
-    qDebug() << element.firstChildElement("profile").isNull();
     for(QDomElement n = element.firstChildElement(); !n.isNull(); n = n.nextSiblingElement()) {
         Wood newWoodElement(n.firstChildElement("name").text());
-        newWoodElement.appendDefect(new Defect("defect1", 1.0, Defect::LessThan, "A description"));
+
+        QDomElement defects = n.firstChildElement("defects");
+        for(QDomElement m = defects.firstChildElement(); !m.isNull(); m = m.nextSiblingElement()) {
+            QString typeAttrib = m.attribute("type");
+            Defect::DType type = Defect::LessThan; //Type defaults to LessThan
+            if (typeAttrib == "GT")
+                type = Defect::LongerThan;
+
+            newWoodElement.appendDefect(new Defect(m.attribute("name"), m.attribute("threshold").toFloat(),
+                                                   type, m.attribute("description"),
+                                                   m.attribute("per").toFloat()));
+        }
+
         model->addProfile(newWoodElement);
     }
     return true;
@@ -49,9 +60,14 @@ bool XMLAccess::saveProfilesXML(WoodModel *model)
         attribute.appendChild(text);
         newProfile.appendChild(attribute);
 
-        attribute = doc.createElement("img");
-        text = doc.createTextNode(QString::number(i) + ".jpg");
-        attribute.appendChild(text);
+        attribute = doc.createElement("defects");
+        QList<QObject*> defectsList = model->data(model->index(i)).value<QList<QObject*> >();
+        for (int j=0; j<defectsList.count(); j++) {
+            QDomElement defect = doc.createElement("defect");
+            defect.setAttribute("threshold", defectsList.at(j)->property("threshold").toFloat());
+            defect.setAttribute("name", defectsList.at(j)->property("name").toString());
+            attribute.appendChild(defect);
+        }
         newProfile.appendChild(attribute);
 
         root.appendChild(newProfile);
@@ -62,6 +78,8 @@ bool XMLAccess::saveProfilesXML(WoodModel *model)
         qWarning() << "Could not write to xml file";
         return false;
     }
+
+    qDebug() << "XML content saved";
 
     return true;
 }
@@ -80,9 +98,9 @@ bool XMLAccess::readHistory(HistoryModel *model)
     QDomElement element = doc.documentElement();
     for(QDomElement n = element.firstChildElement(); !n.isNull(); n = n.nextSiblingElement()) {
         HistoryElement newHistoryElement(n.firstChildElement("plank").text(),
-                            n.firstChildElement("text").text(),
-                            QDateTime::fromString(n.firstChildElement("start").text(), Qt::ISODate),
-                            QDateTime::fromString(n.firstChildElement("end").text(), Qt::ISODate));
+                                         n.firstChildElement("text").text(),
+                                         QDateTime::fromString(n.firstChildElement("start").text(), Qt::ISODate),
+                                         QDateTime::fromString(n.firstChildElement("end").text(), Qt::ISODate));
 
         QDomElement correctionElement = n.firstChildElement("corrections");
         for(QDomElement c = correctionElement.firstChildElement(); !c.isNull(); c = c.nextSiblingElement()) {

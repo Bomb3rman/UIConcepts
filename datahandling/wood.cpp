@@ -2,10 +2,10 @@
 #include <QDebug>
 
 
-Defect::Defect(const QString &name, const qreal &threshold, const DType type, const QString &description, QObject *parent)
-    : QObject(parent), m_name(name), m_threshold(threshold), m_type(type), m_description(description)
+Defect::Defect(const QString &name, const qreal &threshold, const DType type, const QString &description,
+               qreal per, QObject *parent)
+    : QObject(parent), m_name(name), m_threshold(threshold), m_type(type), m_description(description), m_per(per)
 {
-
 }
 
 QString Defect::name() const
@@ -50,6 +50,17 @@ void Defect::setDescription(const QString &description)
 {
     m_description = description;
     Q_EMIT descriptionChanged();
+}
+
+qreal Defect::per() const
+{
+    return m_per;
+}
+
+void Defect::setPer(const qreal &per)
+{
+    m_per = per;
+    Q_EMIT perChanged();
 }
 
 Wood::Wood(const QString &name, const QList<QObject*> defects)

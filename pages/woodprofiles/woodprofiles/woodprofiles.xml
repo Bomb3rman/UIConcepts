@@ -1,10 +1,22 @@
 <woodprofiles>
   <profile>
     <name>Birch</name>
-    <img>birke.jpg</img>
+    <defects>
+      <defect threshold="10" per="1000" type="LT" name="Defect1" description="This is a cool defect"/>
+      <defect threshold="0.1" per="100" type="GT" name="Defect2" description="This is a cool defect"/>
+      <defect threshold="1000" per="1000" type="LT" name="Defect3" description="This is a not so cool defect"/>
+      <defect threshold="0.33" per="1000" type="GT" name="Defect4" description="This is a cool defect"/>
+      <defect threshold="0.1" per="1000" type="LT" name="Defect5" description="This is a very cool defect"/>
+    </defects>
   </profile>
   <profile>
     <name>Maple</name>
-    <img>ahorn.jpg</img>
+    <defects>
+      <defect threshold="10" per="1000" type="LT" name="Defect1" description="This is a cool defect"/>
+      <defect threshold="0.1" per="100" type="GT" name="Defect2" description="This is a cool defect"/>
+      <defect threshold="1000" per="1000" type="LT" name="Defect3" description="This is a not so cool defect"/>
+      <defect threshold="0.33" per="1000" type="GT" name="Defect4" description="This is a cool defect"/>
+      <defect threshold="0.1" per="1000" type="LT" name="Defect5" description="This is a very cool defect"/>
+    </defects>
   </profile>
 </woodprofiles>
