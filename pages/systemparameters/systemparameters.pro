@@ -7,10 +7,10 @@ QT += quick
 include(../plugins.pri)
 
 SOURCES += \
-    dummypage.cpp
+    parameters.cpp
 
 HEADERS += \
-    dummypage.h
+    parameters.h
 
 RESOURCES += \
     recources.qrc

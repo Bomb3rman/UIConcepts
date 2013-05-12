@@ -1,4 +1,4 @@
-#include "dummypage.h"
+#include "parameters.h"
 
 SystemPPage::SystemPPage(QObject *parent) :
     PagePlugin(parent)

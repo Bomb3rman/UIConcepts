@@ -1,4 +1,4 @@
-#include "dummypage.h"
+#include "woodprofiles.h"
 #include <../../datahandling/datahandling.h>
 #include <QQmlContext>
 

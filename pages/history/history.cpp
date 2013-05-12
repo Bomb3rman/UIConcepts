@@ -1,4 +1,4 @@
-#include <dummypage.h>
+#include <history.h>
 #include <QQmlContext>
 #include <../../datahandling/datahandling.h>
 

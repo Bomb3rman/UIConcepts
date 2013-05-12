@@ -13,10 +13,10 @@ export(copyassets.commands)
 QMAKE_EXTRA_TARGETS = first copyassets
 
 SOURCES += \
-    dummypage.cpp
+    woodprofiles.cpp
 
 HEADERS += \
-    dummypage.h
+    woodprofiles.h
 
 RESOURCES += \
     recources.qrc

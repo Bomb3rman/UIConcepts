@@ -1,7 +1,6 @@
 #include <QApplication>
 #include <QQuickView>
 #include <QPluginLoader>
-#include <QDebug>
 #include <pagemodel.h>
 #include <QQmlContext>
 #include <QPalette>
@@ -9,17 +8,21 @@
 #include "../datahandling/logging.h"
 #include "documentation.h"
 
+void setPalette()
+{
+    QPalette palette;
+    palette.setColor(QPalette::Active, QPalette::Text, QColor(Qt::white));
+    palette.setColor(QPalette::Inactive, QPalette::Text, QColor(Qt::gray));
+    qobject_cast<QApplication*>(QApplication::instance())->setPalette(palette);
+}
+
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-    QPalette newSystemPalette;
-    newSystemPalette.setColor(QPalette::Active, QPalette::Text, QColor(Qt::white));
-    newSystemPalette.setColor(QPalette::Inactive, QPalette::Text, QColor(Qt::gray));
-    app.setPalette(newSystemPalette);
+
+    setPalette();
 
     QQuickView viewer;
-    QSurfaceFormat format;
-    format.setSamples(4);
     viewer.engine()->addImportPath("../plugins/qml");
     viewer.rootContext()->setContextProperty("datahandling", new Datahandling());
     PageModel pageLoader(viewer.engine(), viewer.rootObject());
@@ -31,10 +34,8 @@ int main(int argc, char *argv[])
     Documentation documentation;
     viewer.rootContext()->setContextProperty("pageDocumentation", &documentation);
     viewer.setSource(QUrl("qml/concept3.qml"));
-    viewer.setFormat(format);
     viewer.installEventFilter(Logging::instance());
     viewer.show();
-    //QObject::connect(viewer.rootObject(), SIGNAL(sendMsg(QString)), &logging, SLOT(sendMessage(QString)));
 
     return app.exec();
 }

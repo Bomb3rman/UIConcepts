@@ -32,7 +32,7 @@ Rectangle {
         ListElement {name: "Page4"}
     }
 
-    Toolbar3 {
+    Toolbar {
         id: tBar
         model: pageModel
         anchors.left: parent.left
