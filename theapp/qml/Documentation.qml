@@ -15,11 +15,11 @@ Rectangle {
 
     Button {
         z:12
-        width: 90
+        width: 50
         anchors.right: parent.right
         anchors.top: parent.top
         anchors.margins: 8
-        text: "Close"
+        text: "X"
         onClicked: pageDocumentation.visible = !pageDocumentation.visible
         style: buttonStyle
     }

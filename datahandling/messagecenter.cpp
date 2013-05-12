@@ -1,4 +1,5 @@
 #include "messagecenter.h"
+#include "logging.h"
 
 MessageElement::MessageElement(const QString &title, const QString &type, const QString &description)
 {
@@ -59,12 +60,15 @@ QVariant MessageCenter::data(const QModelIndex & index, int role) const {
 
 void MessageCenter::addMessage(const MessageElement &element)
 {
+    beginResetModel();
     m_message.append(element);
+    endResetModel();
 }
 
 void MessageCenter::sendMessage(QString message)
 {
     udpSocket->writeDatagram(message.toUtf8(), QHostAddress::LocalHost, 7755);
+    Logging::instance()->logMessageSent(message);
 }
 
 void MessageCenter::readUdpSocket()
@@ -83,6 +87,8 @@ void MessageCenter::readUdpSocket()
     }
 
     qDebug() << "----Got socket data" << socketData;
+    Logging::instance()->logMessageReceived(socketData);
+    addMessage(MessageElement("Received Message", "Info" , socketData));
 }
 
 

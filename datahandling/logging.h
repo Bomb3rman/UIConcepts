@@ -15,18 +15,20 @@ public:
         Normal,
         Off
     };
-
-    explicit Logging(LogLevel loglevel = Off);
+    static Logging *instance();
     ~Logging();
     void logButtonClicked(QString buttonName);
     void logPageOpened(QString pageName);
     void logMessageReceived(QString message);
+    void logMessageSent(QString message);
     void logMouseClicked(QPointF pos);
 
 protected:
     bool eventFilter(QObject *obj, QEvent *event);
 
 private:
+
+    explicit Logging(LogLevel loglevel = Off);
     void log(QString logline);
     QFile logfile;
     LogLevel m_loglevel;

@@ -8,6 +8,7 @@
 Logging::Logging(LogLevel loglevel) :
     m_loglevel(loglevel)
 {
+    qDebug() << "Creating logging instance";
     QDir dir;
     dir.cdUp();
     if (!dir.exists("logs")) {
@@ -35,6 +36,12 @@ Logging::Logging(LogLevel loglevel) :
     logfile.write("Begin Logfile\n");
 }
 
+Logging *Logging::instance()
+{
+    static Logging *loggingInstance = new Logging(Verbose);
+    return loggingInstance;
+}
+
 Logging::~Logging()
 {
 }
@@ -55,6 +62,12 @@ void Logging::logMessageReceived(QString message)
 {
     if (m_loglevel <= Normal)
         log("Log message received: " + message);
+}
+
+void Logging::logMessageSent(QString message)
+{
+    if (m_loglevel <= Normal)
+        log("Log message sent: " + message);
 }
 
 void Logging::logMouseClicked(QPointF pos)
