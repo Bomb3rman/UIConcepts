@@ -6,6 +6,7 @@ AppWindow {
     id: rootApp
     width: 1200
     height: 900
+
     color: "#1b1c1e"
 
     FontLoader {

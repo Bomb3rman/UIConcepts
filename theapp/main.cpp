@@ -1,7 +1,7 @@
 #include <QApplication>
 #include <QQuickView>
 #include <QPluginLoader>
-#include <pagemodel.h>
+#include "pagemodel.h"
 #include <QQmlContext>
 #include <QPalette>
 #include "../datahandling/datahandling.h"
@@ -15,6 +15,8 @@ void setPalette()
     palette.setColor(QPalette::Inactive, QPalette::Text, QColor(Qt::gray));
     qobject_cast<QApplication*>(QApplication::instance())->setPalette(palette);
 }
+
+#include "pagemodel.h"
 
 int main(int argc, char *argv[])
 {

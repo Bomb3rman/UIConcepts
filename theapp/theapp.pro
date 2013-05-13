@@ -1,10 +1,10 @@
-# Add more folders to ship with the application, here
-#myFolder.target = qml
-#DEPLOYMENTFOLDERS = myFolder
-
 first.depends = $(first) copyassets
 export(first.depends)
-copyassets.commands = $(COPY_DIR) $$PWD/qml $$OUT_PWD/
+unix {
+    copyassets.commands = $(COPY_DIR) $$PWD/qml $$OUT_PWD/
+} windows {
+    copyassets.commands = $$QMAKE_COPY_DIR \"$${PWD}\qml\" \"$${OUT_PWD}\qml\"
+}
 export(copyassets.commands)
 QMAKE_EXTRA_TARGETS = first copyassets
 

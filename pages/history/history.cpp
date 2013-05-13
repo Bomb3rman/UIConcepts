@@ -1,6 +1,6 @@
-#include <history.h>
+#include "history.h"
 #include <QQmlContext>
-#include <../../datahandling/datahandling.h>
+#include "../../datahandling/datahandling.h"
 
 HistoryPage::HistoryPage(QObject *parent) :
     PagePlugin(parent)
@@ -27,7 +27,7 @@ QString HistoryPage::getDocumentation()
 
 void HistoryPage::setModel()
 {
-    qDebug() << "Setting wood model";
+    qDebug() << "Setting history model";
     m_engine->rootContext()->setContextProperty("historyModel", m_historyModel);
 }
 

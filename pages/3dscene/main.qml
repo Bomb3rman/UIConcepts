@@ -12,7 +12,7 @@ MMKPage {
         width: parent.width; height: parent.height
         anchors.fill: parent
         fillColor: "transparent"
-        renderMode: "BufferedRender"
+        renderMode:  "BufferedRender" //"DirectRender"
         objectName: "cube viewport"
 
         Cube {
@@ -21,27 +21,28 @@ MMKPage {
             objectName: "cube"
             property real rotation: 30;
 
-            transform: Rotation3D {
-                angle: theCube.rotation
-                axis: Qt.vector3d(1, 1, 1)
-            }
+//            transform: Rotation3D {
+//                angle: theCube.rotation
+//                axis: Qt.vector3d(1, 1, 1)
+//            }
 
             effect: Effect {
                 color: "#aaca00"
                 texture: "qrc:/3dscene/mmklogo.png"
                 decal: true
             }
-            NumberAnimation on rotation {
-                id: rotaAnim
-                from: 0; to: 365; duration: 3000; loops: Animation.Infinite;
-                running: true
-            }
+//            NumberAnimation on rotation {
+//                id: rotaAnim
+//                from: 0; to: 365; duration: 3000; loops: Animation.Infinite;
+//                running: true
+//            }
         }
 
     }
 
     Text {
-        anchors.centerIn: parent
+        anchors.top: parent.top
+        anchors.horizontalCenter: parent.horizontalCenter;
         font.bold: true
         font.pixelSize: 30
         color: "white"

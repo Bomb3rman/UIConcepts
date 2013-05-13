@@ -1,4 +1,4 @@
-#include <xmlaccess.h>
+#include "xmlaccess.h"
 #include <QDir>
 #include <QDebug>
 #include <QFile>
@@ -12,7 +12,7 @@ QDir historyDir("../assets/history/");
 bool XMLAccess::readProfilesXML(WoodModel *model)
 {
     QFile xmlFile(woodProfileDir.absolutePath() + "/woodprofiles.xml");
-    qDebug() <<xmlFile.fileName();
+    qDebug() << xmlFile.fileName();
     xmlFile.open(QIODevice::ReadOnly);
     if (!xmlFile.isOpen()) {
         qWarning() << "Could not open XML wood profile file";

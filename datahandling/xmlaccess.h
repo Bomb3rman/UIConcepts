@@ -1,8 +1,8 @@
 #ifndef XMLACCESS_H
 #define XMLACCESS_H
 
-#include <woodmodel.h>
-#include <historymodel.h>
+#include "woodmodel.h"
+#include "historymodel.h"
 
 class XMLAccess
 {

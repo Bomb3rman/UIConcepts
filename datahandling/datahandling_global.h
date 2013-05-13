@@ -10,3 +10,4 @@
 #endif
 
 #endif // DATAHANDLING_GLOBAL_H
+

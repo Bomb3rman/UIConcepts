@@ -1,4 +1,7 @@
+TARGET = pageplugin
 TEMPLATE = lib
+
+DEFINES += PAGEPLUGIN_LIBRARY
 
 include(../plugins.pri)
 
