@@ -44,13 +44,16 @@ QVariant WoodModel::data(const QModelIndex & index, int role) const {
 }
 
 bool WoodModel::saveDefect(int id, int defectId, QString name, QString type,
-                            QString threshold, QString description)
+                            qreal threshold, QString description, qreal per)
 {
-    if (id == -2) {
-        //addProfile(Wood(name, defects));
+    if (defectId == -2 && id >=0 && id < rowCount()) {
+        qDebug() << "Adding new defect";
+        Defect *newDefect = new Defect(name, threshold, type, description, per);
+        m_wood[id].appendDefect(newDefect);
+        Q_EMIT dataChanged(index(id), index(id));
         return true;
     }
-    if (id < 0 || id >= rowCount())
+    if (id < 0 || defectId < 0 || id >= rowCount() || defectId >= m_wood.at(id).defects().count())
         return false;
 
     m_wood.at(id).defects().at(defectId)->setProperty("name", name);
@@ -63,6 +66,16 @@ bool WoodModel::saveDefect(int id, int defectId, QString name, QString type,
     XMLAccess::saveProfilesXML(this);
 #endif
     return true;
+}
+
+void WoodModel::deleteDefect(int id, int defectId)
+{
+    if (id < 0 || defectId < 0 || id >= rowCount() || defectId >= m_wood.at(id).defects().count())
+        return;
+
+    delete m_wood.at(id).defects().takeAt(defectId);
+
+    Q_EMIT dataChanged(index(id), index(id));
 }
 
 int WoodModel::activeProfile()

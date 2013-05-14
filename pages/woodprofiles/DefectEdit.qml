@@ -6,7 +6,7 @@ import QtQuick.Layouts 1.0
 
 Item {
     id: editW
-    height: parent.height/4
+    height: 220
     anchors.left: parent.left
     anchors.right: parent.right
     anchors.margins: 2
@@ -17,7 +17,7 @@ Item {
     }
 
     visible: false
-    y: rootPage.defect !== -1 ? rootPage.height/4 * 3 : rootPage.height
+    y: rootPage.defect !== -1 ? parent.height - 220 : rootPage.height
     Behavior on y {
         NumberAnimation {duration: 500; easing.type: Easing.InOutSine}
     }
@@ -36,7 +36,7 @@ Item {
         anchors.right: parent.right
     }
     GridLayout {
-        rows: 4
+        rows: 5
         flow: GridLayout.TopToBottom
         anchors.right: parent.right
         anchors.left: parent.left
@@ -55,49 +55,79 @@ Item {
         MMKLabel {
             text: "Description:"
         }
+        MMKLabel {
+            text: "Per:"
+        }
         TextField {
             id: defectName
-            text: rootPage.marked >= 0 ? woodModel.getDefect(rootPage.marked, rootPage.defect).name : ""
+            text: rootPage.marked >= 0 && rootPage.defect >= 0 ?
+                      woodModel.getDefect(rootPage.marked, rootPage.defect).name : "Name"
             style: MMKTextField{}
         }
         TextField {
             id: defectType
-            text: rootPage.marked >= 0 ? woodModel.getDefect(rootPage.marked, rootPage.defect).type : ""
+            text: rootPage.marked >= 0 && rootPage.defect >= 0 ?
+                      woodModel.getDefect(rootPage.marked, rootPage.defect).type : "T"
             style: MMKTextField{}
         }
         TextField {
             id: defectThreshold
-            text: rootPage.marked >= 0 ? woodModel.getDefect(rootPage.marked, rootPage.defect).threshold : ""
+            text: rootPage.marked >= 0 && rootPage.defect >= 0 ?
+                      woodModel.getDefect(rootPage.marked, rootPage.defect).threshold : "Th"
             style: MMKTextField{}
         }
         TextField {
             id: defectDescription
-            text: rootPage.marked >= 0 ? woodModel.getDefect(rootPage.marked, rootPage.defect).description : ""
+            text: rootPage.marked >= 0 && rootPage.defect >= 0 ?
+                      woodModel.getDefect(rootPage.marked, rootPage.defect).description : ""
+            style: MMKTextField{}
+        }
+        TextField {
+            id: defectPer
+            text: rootPage.marked >= 0 && rootPage.defect >= 0 ?
+                      woodModel.getDefect(rootPage.marked, rootPage.defect).description : ""
             style: MMKTextField{}
         }
 
     }
-    Button {
-        id: saveButton
-        visible: datahandling.safeMode ? false : true
+    Column {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        anchors.margins: 30
-        text: "save"
-        style: MMKButton{}
-        onClicked: {
-            woodModel.saveDefect(rootPage.marked, rootPage.defect, defectName.text, defectType.text,
-                                  defectThreshold.text, defectDescription.text);
-            rootPage.marked = -1
+        anchors.margins: 20
+        spacing: 20
+        Button {
+            id: saveButton
+            visible: datahandling.safeMode ? false : true
+
+            text: "save"
+            style: MMKButton{}
+            onClicked: {
+                woodModel.saveDefect(rootPage.marked, rootPage.defect, defectName.text, defectType.text,
+                                      defectThreshold.text, defectDescription.text, defectPer.text);
+                //rootPage.marked = -1
+                rootPage.defect = -1
+            }
         }
-    }
-    Button {
-        id: dismissButton
-        anchors.right: datahandling.safeMode ? parent.right :saveButton.left
-        anchors.bottom: parent.bottom
-        anchors.margins: 30
-        text: "dismiss"
-        style: MMKButton{}
-        onClicked: rootPage.marked = -1
+        Button {
+            id: deleteButton
+            visible: datahandling.safeMode ? false : true
+
+            text: "delete"
+            style: MMKButton{}
+            onClicked: {
+                woodModel.deleteDefect(rootPage.marked, rootPage.defect);
+                rootPage.marked = -1
+                rootPage.defect = -1
+            }
+        }
+        Button {
+            id: dismissButton
+            text: "dismiss"
+            style: MMKButton{}
+            onClicked: {
+                rootPage.marked = -1
+                rootPage.defect = -1
+            }
+        }
     }
 }

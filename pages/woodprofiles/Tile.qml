@@ -77,6 +77,19 @@ Box {
             rootPage.defect = -1
         }
     }
+    Button {
+        visible: datahandling.safeMode || !parent.clicked ?
+                     false : rootPage.marked !== -2
+        anchors.bottom: parent.bottom
+        anchors.right: parent.right
+        anchors.margins: 10
+        text: "Add defect"
+        style: MMKButton{}
+        onClicked: {
+            editW.visible = true;
+            rootPage.defect = -2
+        }
+    }
     Text {
         id: activeLabel
         anchors.bottom: parent.bottom

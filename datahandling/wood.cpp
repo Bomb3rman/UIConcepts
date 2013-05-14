@@ -38,6 +38,7 @@ qreal Defect::threshold() const
 void Defect::setThreshold(const qreal &threshold)
 {
     m_threshold = threshold;
+    Q_EMIT thresholdChanged();
 }
 
 QString Defect::description() const

@@ -27,7 +27,9 @@ public:
     QVariant data(const QModelIndex & index, int role = Qt::DisplayRole) const;
 
     Q_INVOKABLE bool saveDefect(int id, int defectId, QString name, QString type,
-                                QString threshold, QString description);
+                                qreal threshold, QString description, qreal per);
+
+    Q_INVOKABLE void deleteDefect(int id, int defectId);
 
     int activeProfile();
 
