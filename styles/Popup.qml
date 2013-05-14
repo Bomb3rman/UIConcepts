@@ -8,7 +8,7 @@ BorderImage {
     source: "ui/box.png"
     width: 500
     height: 300
-    anchors.centerIn: rootApp
+    anchors.centerIn: parent
 
     border.left: 5; border.top: 5
     border.right: 5; border.bottom: 5

@@ -82,7 +82,6 @@ AppWindow {
                             onClicked: {
                                 var popupComponent = Qt.createComponent("SendMessagePopup.qml")
                                 popupComponent.createObject(rootApp);
-                                print("Send message button clicked");
                             }
                         }
                     }

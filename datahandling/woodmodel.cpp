@@ -17,7 +17,12 @@ void WoodModel::addProfile(const Wood &wood)
     beginInsertRows(QModelIndex(), rowCount(), rowCount());
     m_wood << wood;
     endInsertRows();
-    qDebug() << "Inserting wood into model" << wood.name();
+}
+
+void WoodModel::addProfile(QString name)
+{
+    Wood wood(name);
+    addProfile(wood);
 }
 
 int WoodModel::rowCount(const QModelIndex & parent) const {

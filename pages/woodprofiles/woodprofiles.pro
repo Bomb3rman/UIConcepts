@@ -44,3 +44,6 @@ OTHER_FILES += \
 
 OTHER_FILES += \
     DefectEdit.qml
+
+OTHER_FILES += \
+    NewProfilePopup.qml

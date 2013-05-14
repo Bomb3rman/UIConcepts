@@ -52,8 +52,11 @@ MMKPage {
                 id: mArea1
                 anchors.fill: parent
                 onClicked: {
-                    editW.visible = true
+                    editW.visible = false
                     rootPage.marked = -2;
+                    rootPage.defect = -1;
+                    var popupComponent = Qt.createComponent("NewProfilePopup.qml")
+                    popupComponent.createObject(rootPage);
                 }
             }
         }

@@ -3,5 +3,6 @@
         <file>main.qml</file>
         <file>Tile.qml</file>
         <file>DefectEdit.qml</file>
+        <file>NewProfilePopup.qml</file>
     </qresource>
 </RCC>
