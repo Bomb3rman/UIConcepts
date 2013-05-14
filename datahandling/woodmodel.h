@@ -24,7 +24,8 @@ public:
 
     QVariant data(const QModelIndex & index, int role = Qt::DisplayRole) const;
 
-    Q_INVOKABLE bool saveProfile(int id, QString name, QList<QObject*> defects);
+    Q_INVOKABLE bool saveDefect(int id, int defectId, QString name, QString type,
+                                QString threshold, QString description);
 
     int activeProfile();
 
@@ -32,6 +33,9 @@ public:
 
 Q_SIGNALS:
     void activeProfileChanged();
+
+public Q_SLOTS:
+    QObject *getDefect(int row, int index);
 
 protected:
     QHash<int, QByteArray> roleNames() const;

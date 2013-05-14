@@ -26,13 +26,9 @@ bool XMLAccess::readProfilesXML(WoodModel *model)
 
         QDomElement defects = n.firstChildElement("defects");
         for(QDomElement m = defects.firstChildElement(); !m.isNull(); m = m.nextSiblingElement()) {
-            QString typeAttrib = m.attribute("type");
-            Defect::DType type = Defect::LessThan; //Type defaults to LessThan
-            if (typeAttrib == "GT")
-                type = Defect::LongerThan;
-
+            QString typeAttrib = m.attribute("type", "LT"); //Type defaults to LessThan
             newWoodElement.appendDefect(new Defect(m.attribute("name"), m.attribute("threshold").toFloat(),
-                                                   type, m.attribute("description"),
+                                                   typeAttrib, m.attribute("description"),
                                                    m.attribute("per").toFloat()));
         }
 

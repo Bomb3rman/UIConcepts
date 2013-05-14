@@ -33,22 +33,25 @@ QVariant WoodModel::data(const QModelIndex & index, int role) const {
     if (role == NameRole)
         return wood.name();
     else if (role == DefectsRole) {
-        qDebug() << "Returning defects" << wood.defects().count();
         return QVariant::fromValue(wood.defects());
     }
     return QVariant();
 }
 
-bool WoodModel::saveProfile(int id, QString name, QList<QObject*> defects)
+bool WoodModel::saveDefect(int id, int defectId, QString name, QString type,
+                            QString threshold, QString description)
 {
     if (id == -2) {
-        addProfile(Wood(name, defects));
+        //addProfile(Wood(name, defects));
         return true;
     }
     if (id < 0 || id >= rowCount())
         return false;
 
-    m_wood[id] = Wood(name, defects);
+    m_wood.at(id).defects().at(defectId)->setProperty("name", name);
+    m_wood.at(id).defects().at(defectId)->setProperty("type", type);
+    m_wood.at(id).defects().at(defectId)->setProperty("threshold", threshold);
+    m_wood.at(id).defects().at(defectId)->setProperty("description", description);
     Q_EMIT dataChanged(index(id), index(id));
 
 #if defined(USE_XML)
@@ -66,6 +69,16 @@ void WoodModel::setActiveProfile(int id)
 {
     m_activeProfile = id;
     Q_EMIT activeProfileChanged();
+}
+
+QObject *WoodModel::getDefect(int row, int index)
+{
+    if (row < 0 || index <0  || row > m_wood.count()-1
+            || index > m_wood.at(row).defects().count()-1) {
+        qWarning() << "Defect request out of bounds" << row << index;
+        return 0;
+    }
+    return m_wood.at(row).defects().at(index);
 }
 
 QHash<int, QByteArray> WoodModel::roleNames() const {

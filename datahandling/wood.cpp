@@ -2,7 +2,7 @@
 #include <QDebug>
 
 
-Defect::Defect(const QString &name, const qreal &threshold, const DType type, const QString &description,
+Defect::Defect(const QString &name, const qreal &threshold, const QString type, const QString &description,
                qreal per, QObject *parent)
     : QObject(parent), m_name(name), m_threshold(threshold), m_type(type), m_description(description), m_per(per)
 {
@@ -10,7 +10,6 @@ Defect::Defect(const QString &name, const qreal &threshold, const DType type, co
 
 QString Defect::name() const
 {
-    qDebug() << "returning name" << m_name;
     return m_name;
 }
 
@@ -20,12 +19,12 @@ void Defect::setName(const QString &name)
     Q_EMIT nameChanged();
 }
 
-Defect::DType Defect::type() const
+QString Defect::type() const
 {
     return m_type;
 }
 
-void Defect::setType(const DType &type)
+void Defect::setType(const QString &type)
 {
     m_type = type;
     Q_EMIT typeChanged();

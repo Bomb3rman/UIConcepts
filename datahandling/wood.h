@@ -9,26 +9,21 @@ class Defect : public QObject {
     Q_OBJECT
 
     Q_PROPERTY(QString name READ name WRITE setName NOTIFY nameChanged)
-    Q_PROPERTY(DType type READ type WRITE setType NOTIFY typeChanged)
+    Q_PROPERTY(QString type READ type WRITE setType NOTIFY typeChanged)
     Q_PROPERTY(qreal threshold READ threshold WRITE setThreshold NOTIFY thresholdChanged)
     Q_PROPERTY(qreal per READ per WRITE setPer NOTIFY perChanged)
     Q_PROPERTY(QString description READ description WRITE setDescription NOTIFY descriptionChanged)
 
 public:
 
-    enum DType {
-        LessThan,
-        LongerThan
-    };
-
-    Defect(const QString &name, const qreal &threshold, const DType type, const QString &description = "",
+    Defect(const QString &name, const qreal &threshold, const QString type, const QString &description = "",
            qreal per = 1000, QObject *parent=0);
 
     QString name() const;
     void setName(const QString &name);
 
-    DType type() const;
-    void setType(const DType &type);
+    QString type() const;
+    void setType(const QString &type);
 
     qreal threshold() const;
     void setThreshold(const qreal &threshold);
@@ -49,7 +44,7 @@ signals:
 private:
     QString m_name;
     qreal m_threshold;
-    DType m_type;
+    QString m_type;
     QString m_description;
     qreal m_per;
 };

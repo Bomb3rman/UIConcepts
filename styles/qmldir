@@ -14,3 +14,4 @@ MMKTabView 1.0 MMKTabView.qml
 MMKComboBox 1.0 MMKComboBox.qml
 MMKRadioButton 1.0 MMKRadioButton.qml
 MMKGroupBox 1.0 MMKGroupBox.qml
+MMKTableView 1.0 MMKTableView.qml

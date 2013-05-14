@@ -13,6 +13,7 @@ void setPalette()
     QPalette palette;
     palette.setColor(QPalette::Active, QPalette::Text, QColor(Qt::white));
     palette.setColor(QPalette::Inactive, QPalette::Text, QColor(Qt::gray));
+    palette.setColor(QPalette::Base, QColor(Qt::transparent));
     qobject_cast<QApplication*>(QApplication::instance())->setPalette(palette);
 }
 

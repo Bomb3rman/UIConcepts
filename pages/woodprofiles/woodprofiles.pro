@@ -38,3 +38,9 @@ RESOURCES += \
 
 OTHER_FILES += \
     main.qml
+
+OTHER_FILES += \
+    Tile.qml
+
+OTHER_FILES += \
+    DefectEdit.qml

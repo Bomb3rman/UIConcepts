@@ -62,3 +62,6 @@ OTHER_FILES += \
 
 OTHER_FILES += \
     Popup.qml
+
+OTHER_FILES += \
+    MMKTableView.qml

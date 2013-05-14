@@ -6,4 +6,5 @@ Text {
     style: Text.Raised; styleColor: "#AAAAAA"
     color: "white"
     wrapMode: Text.WordWrap
+    font.bold: true
 }

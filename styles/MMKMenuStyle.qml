@@ -2,7 +2,7 @@ import QtQuick 2.1
 import QtQuick.Controls 1.0
 import QtQuick.Controls.Styles 1.0
 
-Style {
+ComboBoxStyle {
     id: styleRoot
 
     property string __menuItemType: "menuitem"
