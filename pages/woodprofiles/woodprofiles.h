@@ -14,12 +14,14 @@ public:
 
     QString getBasicInfo();
     QString getExtendedInfo();
+    QString getDocumentation();
 
 public Q_SLOTS:
     void setModel();
 
 private:
     WoodModel *woodModel;
+    QString m_documentation;
 };
 
 #endif // DUMMYPAGE_H

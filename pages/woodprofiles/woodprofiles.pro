@@ -13,10 +13,10 @@ include(../plugins.pri)
 first.depends = $(first) mkassets copyassets
 export(first.depends)
 unix {
-copyassets.commands = $(MKDIR) $$OUT_PWD/../../assets/woodprofiles | $$QMAKE_COPY $$PWD/woodprofiles/* $$OUT_PWD/../../assets/woodprofiles
+    copyassets.commands = $(MKDIR) $$OUT_PWD/../../assets/woodprofiles | $$QMAKE_COPY $$PWD/woodprofiles/* $$OUT_PWD/../../assets/woodprofiles
 } windows {
-!exists( $${OUT_PWD}/../../assets ){
-   mkassets.commands = $(MKDIR) \"$${OUT_PWD}/../../assets\"
+    !exists( $${OUT_PWD}/../../assets ){
+    mkassets.commands = $(MKDIR) \"$${OUT_PWD}/../../assets\"
 }
 
 #copyassets.commands = $(MKDIR) \"$${OUT_PWD}\..\..\assets\" | $$QMAKE_COPY_DIR \"$${PWD}\history\" \"$${OUT_PWD}\..\..\assets\\"

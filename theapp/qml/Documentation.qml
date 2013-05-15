@@ -3,14 +3,17 @@ import QtQuick.Controls 1.0
 import QtQuick.Controls.Styles 1.0
 
 Rectangle {
-    Text {
+    color: "darkgray"
+    TextArea {
         anchors.left: parent.left
         anchors.top: parent.top
         anchors.right: parent.right
-        anchors.margins: 20
+        anchors.bottom: parent.bottom
+        anchors.margins: 10
         anchors.topMargin: 40
         wrapMode: Text.WordWrap
         text: pageDocumentation.text
+        textFormat: Qt.RichText
     }
 
     Button {
