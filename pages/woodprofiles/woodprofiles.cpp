@@ -15,6 +15,8 @@ WoodProfilesPage::WoodProfilesPage(QObject *parent) :
         m_documentation = QString::fromUtf8(file.readAll());
     else
         qWarning() << "Could not open documentation file for woodprofiles";
+
+    connect(woodModel, SIGNAL(activeProfileChanged()), this, SLOT(updateInfos()));
 }
 
 WoodProfilesPage::~WoodProfilesPage()
@@ -28,7 +30,12 @@ QString WoodProfilesPage::getBasicInfo()
 
 QString WoodProfilesPage::getExtendedInfo()
 {
-    return "4 active profiles\n50 saved profiles";
+    if (woodModel->activeProfile() < 0) {
+        return QByteArray("No active profile\n") + QByteArray::number(woodModel->rowCount()) + QByteArray(" saved profiles");
+    }
+
+    return QByteArray("Active profile: ") + woodModel->data(woodModel->index(woodModel->activeProfile(),0), WoodModel::NameRole).toByteArray()
+            + QByteArray("\n") + QByteArray::number(woodModel->rowCount()) + QByteArray(" saved profiles");
 }
 
 QString WoodProfilesPage::getDocumentation()
@@ -40,5 +47,11 @@ void WoodProfilesPage::setModel()
 {
     qDebug() << "Setting wood model";
     m_engine->rootContext()->setContextProperty("woodModel", woodModel);
+}
+
+void WoodProfilesPage::updateInfos()
+{
+    qDebug() << "updating infos";
+    Q_EMIT extendedInfoChanged();
 }
 

@@ -18,6 +18,7 @@ public:
 
 public Q_SLOTS:
     void setModel();
+    void updateInfos();
 
 private:
     WoodModel *woodModel;

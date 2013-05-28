@@ -38,30 +38,3 @@ OTHER_FILES = qmldir
 
 OTHER_FILES += \
     *.qml
-
-OTHER_FILES += \
-    mmkstyle.qml
-
-OTHER_FILES += \
-    MMKSlider.qml
-
-OTHER_FILES += \
-    MMKTabView.qml
-
-OTHER_FILES += \
-    MMKComboBox.qml
-
-OTHER_FILES += \
-    MMKMenuStyle.qml
-
-OTHER_FILES += \
-    MMKRadioButton.qml
-
-OTHER_FILES += \
-    MMKGroupBox.qml
-
-OTHER_FILES += \
-    Popup.qml
-
-OTHER_FILES += \
-    MMKTableView.qml

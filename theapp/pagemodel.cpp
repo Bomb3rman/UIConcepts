@@ -68,6 +68,8 @@ QVariant PageModel::data(const QModelIndex & index, int role) const {
         return page->getExtendedInfo();
     else if (role == Documentation)
         return page->getDocumentation();
+    else if (role == PageObject)
+        return qVariantFromValue((QObject*)page);
     return QVariant();
 }
 
@@ -77,5 +79,6 @@ QHash<int, QByteArray> PageModel::roleNames() const {
     roles[BasicInfo] = "BasicInfo";
     roles[ExtendedInfo] = "ExtendedInfo";
     roles[Documentation] = "Documentation";
+    roles[PageObject] = "PageObject";
     return roles;
 }

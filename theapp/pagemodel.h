@@ -13,7 +13,7 @@ class PageModel : public QAbstractListModel
 public:
     enum PageRoles {
         Page = Qt::UserRole + 1,
-        BasicInfo, ExtendedInfo, Documentation
+        BasicInfo, ExtendedInfo, Documentation, PageObject
     };
     explicit PageModel(QQmlEngine *engine, QObject *rootObj);
 

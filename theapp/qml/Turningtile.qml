@@ -27,7 +27,7 @@ Item {
         transform: Rotation { origin.x: 130; origin.y: 0;
             axis { x: 1; y: 0; z: 0 } angle: rotation - 90
         }
-        text: model.ExtendedInfo
+        text: model.PageObject.extendedInfo
         Button {
             anchors.bottom: parent.bottom
             anchors.right: parent.right

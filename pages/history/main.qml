@@ -16,15 +16,71 @@ MMKPage {
         text: "History"
     }
 
+    Rectangle {
+        id: woodPreview
+        anchors.top: title.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: lView.top
+        anchors.margins: 15
+
+        Text {
+            anchors.centerIn: parent
+            text: "Wood preview"
+        }
+    }
+
+    Box {
+        anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        anchors.right: lView.left
+        anchors.top: lView.top
+        anchors.margins: 15
+
+        Text {
+            id: text1
+            anchors.top: parent.top
+            anchors.left: parent.left
+            anchors.margins: 20
+            font.bold: true
+            font.pixelSize: 15
+            color: "white"
+            text: "Work mode: stopped\n\nProfile: Testprofile"
+        }
+        Text {
+            id: text2
+            anchors.top: text1.bottom
+            anchors.left: parent.left
+            anchors.margins: 20
+            font.bold: true
+            font.pixelSize: 15
+            color: "white"
+            text: "Space:     Width: 250.0      Thickness: 45.0"
+        }
+        Text {
+            id: text3
+            anchors.top: text2.bottom
+            anchors.left: parent.left
+            anchors.margins: 20
+            font.bold: true
+            font.pixelSize: 25
+            color: "white"
+            text: "Total Yield: 0.0%       0.0 [m^2]"
+        }
+    }
+
     ListView {
         id: lView
-        anchors.fill: parent
-        anchors.topMargin: 130
-        anchors.margins: 30
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 20
+        anchors.right: parent.right
+        width: 250
+        height: 300
+        clip: true
         model: historyModel
         delegate: Rectangle {
             radius: 3
-            height: state == "minimized" ? 50 : 150
+            height: 50
             width: lView.width
             clip: true
             border.color: "black"
@@ -32,88 +88,30 @@ MMKPage {
             opacity: 0.7
             color: "#1b1c1e"
             Text {
-                id: title
+                id: delegateTitle
                 color: "white"
                 font.pixelSize: 20
                 font.bold: true
                 text: model.plank
                 anchors.left: parent.left
                 anchors.top: parent.top
-                anchors.margins: 10
-            }
-            Text {
-                id: text
-                color: "white"
-                font.pixelSize: 15
-                text: model.text
-                anchors.left: parent.left
-                anchors.top: title.bottom
-                anchors.margins: 12
-            }
-            Text {
-                id: correctionsTitle
-                color: "white"
-                font.pixelSize: 15
-                font.bold: true
-                text: "Corrections:"
-                anchors.left: parent.left
-                anchors.top: text.bottom
-                anchors.margins: 10
+                anchors.margins: 3
             }
             Text {
                 id: date
                 color: "white"
                 font.pixelSize: 15
-                text: Qt.formatDateTime(model.start, "dd.MM.yyyy hh:mm") + " - " + Qt.formatDateTime(model.end, "dd.MM.yyyy hh:mm")
+                text: Qt.formatDateTime(model.start, "dd.MM hh:mm") + " - " + Qt.formatDateTime(model.end, "dd.MM hh:mm")
                 anchors.right: parent.right
-                anchors.top: parent.top
-                anchors.margins: 10
-            }
-
-            property var stringList: model.corrections
-
-            Column {
-                anchors.left: parent.left
-                anchors.right: parent.right
-                anchors.top: correctionsTitle.bottom
-                anchors.leftMargin: 20
-                anchors.rightMargin: 20
-                anchors.topMargin: 5
-                height: 80
-                Repeater {
-                    model: stringList
-                    delegate: Text {
-                        text: modelData
-                        color: "white"
-                        font.pixelSize: 14
-                    }
-                }
-            }
-
-            Behavior on height {
-                NumberAnimation {duration: 300}
+                anchors.bottom: parent.bottom
+                anchors.margins: 3
             }
 
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    if(parent.state == "minimized")
-                        parent.state = "maximized";
-                    else
-                        parent.state = "minimized"
                 }
             }
-
-            state: "minimized"
-            states: [
-                State {
-                    name: "minimized"
-                },
-                State {
-                    name: "maximized"
-                }
-
-            ]
         }
     }
 }

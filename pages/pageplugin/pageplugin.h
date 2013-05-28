@@ -16,6 +16,10 @@
 class PagePlugin_DLL PagePlugin : public QObject
 {
     Q_OBJECT
+    Q_PROPERTY(QString basicInfo READ getBasicInfo WRITE setBasicInfo NOTIFY basicInfoChanged)
+    Q_PROPERTY(QString extendedInfo READ getExtendedInfo WRITE setExtendedInfo NOTIFY extendedInfoChanged)
+    Q_PROPERTY(QString documentation READ getDocumentation WRITE setDocumentation NOTIFY documentationChanged)
+
 public:
     explicit PagePlugin(QObject *parent = 0);
     ~PagePlugin();
@@ -26,9 +30,16 @@ public:
     virtual QString getBasicInfo() { return QString(); }
     virtual QString getExtendedInfo() {return QString(); }
     virtual QString getDocumentation() {return QString(); }
+
+    virtual void setBasicInfo(QString) { }
+    virtual void setExtendedInfo(QString) { }
+    virtual void setDocumentation(QString) { }
     
 signals:
     void engineChanged();
+    void basicInfoChanged();
+    void extendedInfoChanged();
+    void documentationChanged();
     
 public slots:
 
