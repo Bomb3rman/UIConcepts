@@ -7,7 +7,7 @@
 
 QDir woodProfileDir("../assets/woodprofiles/");
 QDir historyDir("../assets/history/");
-
+QDir parametersDir("../assets/machineparameters/");
 
 bool XMLAccess::readProfilesXML(WoodModel *model)
 {
@@ -108,6 +108,35 @@ bool XMLAccess::readHistory(HistoryModel *model)
 }
 
 bool XMLAccess::saveHistory(HistoryModel *model)
+{
+    return false;
+}
+
+bool XMLAccess::readParameters(ParameterModel *model)
+{
+    QFile xmlFile(parametersDir.absolutePath() + "/machineparameters.xml");
+    qDebug() <<xmlFile.fileName();
+    xmlFile.open(QIODevice::ReadOnly);
+    if (!xmlFile.isOpen()) {
+        qWarning() << "Could not open XML parameter file";
+        return false;
+    }
+    QDomDocument doc;
+    qDebug() << "Parsing content" << doc.setContent(&xmlFile);
+    QDomElement element = doc.documentElement();
+    for(QDomElement n = element.firstChildElement(); !n.isNull(); n = n.nextSiblingElement()) {
+        ParameterElement newParameterElement(n.firstChildElement("name").text(),
+                                         n.firstChildElement("type").text(),
+                                         n.firstChildElement("value").text(),
+                                         n.firstChildElement("group").text());
+
+        model->addParameter(newParameterElement);
+        qDebug() << "Adding parameter" << newParameterElement.name();
+    }
+    return true;
+}
+
+bool XMLAccess::saveParameters(ParameterModel *model)
 {
     return false;
 }

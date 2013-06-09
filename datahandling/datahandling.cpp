@@ -11,27 +11,39 @@ Datahandling::Datahandling()
 
 WoodModel *Datahandling::createProfilesModel()
 {
-    profilesModel = new WoodModel();
+    if (profilesModel == 0)
+        profilesModel = new WoodModel();
     return profilesModel;
 }
 
 QAbstractItemModel *Datahandling::createHistoryModel()
 {
-    historyModel = new HistoryModel();
-    proxyModel = new QSortFilterProxyModel();
-    proxyModel->setSourceModel(historyModel);
-    proxyModel->setSortCaseSensitivity(Qt::CaseSensitive);
-    proxyModel->setSortRole(HistoryModel::TextRole);
-    proxyModel->sort(0);
+    if (historyModel == 0) {
+        historyModel = new HistoryModel();
+        proxyModel = new QSortFilterProxyModel();
+        proxyModel->setSourceModel(historyModel);
+        proxyModel->setSortCaseSensitivity(Qt::CaseSensitive);
+        proxyModel->setSortRole(HistoryModel::TextRole);
+        proxyModel->sort(0);
+    }
 
     return proxyModel;
 }
 
 QAbstractItemModel *Datahandling::createMessageCenter()
 {
-    messageCenter = new MessageCenter();
+    if (messageCenter == 0)
+        messageCenter = new MessageCenter();
 
     return messageCenter;
+}
+
+QAbstractItemModel *Datahandling::createParameterModel()
+{
+    if (parameterModel == 0)
+        parameterModel = new ParameterModel();
+
+    return parameterModel;
 }
 
 //Login
@@ -51,6 +63,7 @@ void Datahandling::setSafeModeEnabled(bool state)
 
 WoodModel *Datahandling::profilesModel = 0;
 HistoryModel *Datahandling::historyModel = 0;
+ParameterModel *Datahandling::parameterModel = 0;
 MessageCenter *Datahandling::messageCenter = 0;
 QSortFilterProxyModel *Datahandling::proxyModel = 0;
 bool Datahandling::m_safeModeEnabled = false;

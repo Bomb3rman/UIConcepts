@@ -5,6 +5,11 @@
 #include <QAbstractListModel>
 #include <QUdpSocket>
 
+
+/*TODO
+ * Message wegklicken
+ */
+
 class Q_DECL_EXPORT MessageElement
 {
 public:

@@ -3,6 +3,12 @@
 
 #include "../pageplugin/pageplugin.h"
 
+/*TODO
+ *
+ *--> System status
+ *
+ */
+
 class SystemPPage : public PagePlugin
 {
     Q_OBJECT

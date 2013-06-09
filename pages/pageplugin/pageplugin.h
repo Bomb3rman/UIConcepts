@@ -37,6 +37,7 @@ public:
     
 signals:
     void engineChanged();
+    void componentCreated();
     void basicInfoChanged();
     void extendedInfoChanged();
     void documentationChanged();

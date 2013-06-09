@@ -2,16 +2,24 @@
 #define DUMMYPAGE_H
 
 #include "../pageplugin/pageplugin.h"
+#include "../../datahandling/parametermodel.h"
 
-class MachinePPage : public PagePlugin
+class MachinePage : public PagePlugin
 {
     Q_OBJECT
     Q_PLUGIN_METADATA(IID "org.project.dummypage" FILE "machineparameters.json")
 public:
-    MachinePPage(QObject *parent = 0);
+    MachinePage(QObject *parent = 0);
 
     QString getBasicInfo();
     QString getExtendedInfo();
+
+public Q_SLOTS:
+    void setModel();
+    void setAntialiasing();
+
+private:
+    QAbstractItemModel *m_model;
 };
 
 #endif // DUMMYPAGE_H

@@ -2,5 +2,8 @@
     <qresource prefix="/machineparameters">
         <file>main.qml</file>
         <file>models/machine.dae</file>
+        <file>ParameterView.qml</file>
+        <file>Scene3D.qml</file>
+        <file>models/gld600.3DS</file>
     </qresource>
 </RCC>

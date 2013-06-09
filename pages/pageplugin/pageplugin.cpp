@@ -13,7 +13,7 @@ PagePlugin::~PagePlugin()
 void PagePlugin::setEngine(QQmlEngine *engine)
 {
     m_engine = engine;
-    Q_EMIT(engineChanged());
+    Q_EMIT engineChanged();
     QQmlComponent component(engine, m_componentUrl);
     if (component.status() != QQmlComponent::Ready) {
         qDebug() << component.errorString();
@@ -22,6 +22,7 @@ void PagePlugin::setEngine(QQmlEngine *engine)
 //        }
     }
     m_item = qobject_cast<QQuickItem *>(component.create());
+    Q_EMIT componentCreated();
 }
 
 QQuickItem *PagePlugin::getQQuickItem()

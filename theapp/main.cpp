@@ -7,6 +7,7 @@
 #include "../datahandling/datahandling.h"
 #include "../datahandling/logging.h"
 #include "documentation.h"
+#include "QSurfaceFormat"
 
 void setPalette()
 {
@@ -26,6 +27,9 @@ int main(int argc, char *argv[])
     setPalette();
 
     QQuickView viewer;
+//    QSurfaceFormat newFormat;
+//    newFormat.setSamples(16);
+//    viewer.setFormat(newFormat);
     viewer.engine()->addImportPath("../plugins/qml");
     viewer.rootContext()->setContextProperty("datahandling", new Datahandling());
     PageModel pageLoader(viewer.engine(), viewer.rootObject());

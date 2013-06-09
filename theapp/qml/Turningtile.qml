@@ -49,7 +49,7 @@ Item {
         }
     }
     Behavior on rotation {
-        NumberAnimation { duration: 500 }
+        NumberAnimation { duration: 300 }
     }
     //    Behavior on width {
     //        NumberAnimation { duration: 500 }

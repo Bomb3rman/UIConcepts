@@ -3,7 +3,9 @@ import QtQuick.Controls 1.0
 import QtQuick.Controls.Styles 1.0
 
 BorderImage {
-    id: root
+    id: pageRoot
+    property alias pageAnimation: opacityanimation
+
     width: 50
     height: 50
     opacity: 0
@@ -18,17 +20,17 @@ BorderImage {
     states: [
         State {
             name: "minimized"
-            PropertyChanges { target: root; opacity: 0;
+            PropertyChanges { target: pageRoot; opacity: 0;
                 height:50; width: 50;}
         },
         State {
             name: "maximized"
-            PropertyChanges { target: root; opacity: 1; }
+            PropertyChanges { target: pageRoot; opacity: 1; }
         }
     ]
 
     Behavior on opacity {
-        NumberAnimation{duration: 500}
+        NumberAnimation{id: opacityanimation; duration: 500}
     }
     Behavior on width {
         NumberAnimation{duration: 500}

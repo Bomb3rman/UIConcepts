@@ -42,3 +42,6 @@ SOURCES += \
 OTHER_FILES += \
     qml/SendMessagePopup.qml
 
+OTHER_FILES += \
+    qml/qt3dtest.qml
+

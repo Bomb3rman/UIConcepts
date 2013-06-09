@@ -26,3 +26,9 @@ SOURCES += \
     logging.cpp \
     datahandling.cpp
 
+HEADERS += \
+    parametermodel.h
+
+SOURCES += \
+    parametermodel.cpp
+

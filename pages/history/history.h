@@ -4,6 +4,11 @@
 #include "../pageplugin/pageplugin.h"
 #include <QAbstractItemModel>
 
+/* TODO
+ *
+ *Liste fuer aeltere elemente ... von bis
+ */
+
 class HistoryPage : public PagePlugin
 {
     Q_OBJECT

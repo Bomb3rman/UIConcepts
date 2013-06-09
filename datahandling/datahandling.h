@@ -5,6 +5,7 @@
 #include <QString>
 #include "woodmodel.h"
 #include "historymodel.h"
+#include "parametermodel.h"
 #include <QSortFilterProxyModel>
 #include <QQmlContext>
 
@@ -25,6 +26,8 @@ public:
 
     static QAbstractItemModel *createMessageCenter();
 
+    static QAbstractItemModel *createParameterModel();
+
     //Login
     bool checkLogin(QString username, QString password); //TODO save mode
 
@@ -38,6 +41,7 @@ private:
     static WoodModel *profilesModel;
     static HistoryModel *historyModel;
     static MessageCenter *messageCenter;
+    static ParameterModel *parameterModel;
     static QSortFilterProxyModel *proxyModel;
     static bool m_safeModeEnabled;
     static QQmlContext *m_context;
