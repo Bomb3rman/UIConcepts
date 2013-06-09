@@ -1,0 +1,37 @@
+<parameters>
+  <parameter>
+    <name>Dummyparameter1</name>
+    <type>bool</type>
+    <value>0</value>
+    <info>This is a description</info>
+    <group>camera1</group>
+  </parameter>
+  <parameter>
+    <name>Dummyparameter2</name>
+    <type>int</type>
+    <value>2000</value>
+    <info>This is a description</info>
+    <group>camera1</group>
+  </parameter>
+    <parameter>
+    <name>Dummyparameter3</name>
+    <type>string</type>
+    <value>teststr</value>
+    <info>This is a description</info>
+    <group>camera2</group>
+  </parameter>
+    <parameter>
+    <name>Dummyparameter4</name>
+    <type>bool</type>
+    <value>1</value>
+    <info>This is a description</info>
+    <group>camera2</group>
+  </parameter>
+    <parameter>
+    <name>Dummyparameter5</name>
+    <type>float</type>
+    <value>1.25</value>
+    <info>This is a description</info>
+    <group>camera3</group>
+  </parameter>
+</parameters>
