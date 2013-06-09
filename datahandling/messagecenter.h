@@ -19,6 +19,10 @@ public:
     QString type() const;
     QString description() const;
 
+    //public Q_SLOTS:
+        void display();
+        void postpone(int msecs);
+
 private:
     QString m_title;
     QString m_type;

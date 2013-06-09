@@ -23,6 +23,16 @@ QString MessageElement::description() const
     return m_description;
 }
 
+void MessageElement::display()
+{
+
+}
+
+void MessageElement::postpone(int msecs)
+{
+
+}
+
 MessageCenter::MessageCenter(QObject *parent) :
     QAbstractListModel(parent)
 {
